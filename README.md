@@ -27,7 +27,21 @@ and security monitoring using industry-standard tools.
 [What you can practice]
 
 ## Skills Demonstrated
-[Technical skills]
+- SIEM Administration - Splunk deployment and configuration
+- Network Security Monitoring - IDS/IPS implementation
+- Penetration Testing - Full attack lifecycle execution
+- Network Segmentation - VLAN design and firewall rules
+- Log Analysis - Threat detection and investigation
+- Adversary Emulation - MITRE ATT&CK framework
+- Virtualization - VMware infrastructure management
+- Endpoint Security - Sysmon and EDR concepts
+- Linux Administration - Oracle Linux and Kali systems
+- Windows Security - Hardening and monitoring
+- Detection Engineering - Sigma rule development
+- DevSecOps - CI/CD pipeline implementation
+- Infrastructure as Code - Terraform for security automation
+- Version Control - Git workflows and collaboration
+- Automation & Scripting - Python, Bash, GitHub Actions
 
 ## Future Enhancements
 [Roadmap]
