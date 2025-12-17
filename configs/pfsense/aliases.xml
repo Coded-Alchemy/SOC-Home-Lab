@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aliases>
+<alias>
+<name>SOC_SERVER</name>
+<type>host</type>
+<address>192.168.10.100</address>
+<descr>
+<![CDATA[ Splunk Indexer ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Tue, 16 Sep 2025 09:12:52 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>SPLUNK_PORTS</name>
+<type>port</type>
+<address>9997</address>
+<descr>
+<![CDATA[ Port for Splunk usage ]]>
+</descr>
+<detail>
+<![CDATA[ Splunk Receiver Port ]]>
+</detail>
+</alias>
+<alias>
+<name>CALDERA_PORTS</name>
+<type>port</type>
+<address>8888</address>
+<descr>
+<![CDATA[ Ports for Caldera traffic ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Tue, 16 Sep 2025 10:47:30 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>WINDOZE_10</name>
+<type>host</type>
+<address>192.160.30.101</address>
+<descr>
+<![CDATA[ Windows 10 Victim Machine ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Wed, 24 Sep 2025 11:16:20 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>SOCNET</name>
+<type>network</type>
+<address>192.168.10.0/24</address>
+<descr>
+<![CDATA[ Blue Team / management network ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Wed, 24 Sep 2025 15:37:37 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>ATTACK_NET</name>
+<type>network</type>
+<address>192.168.20.0/24</address>
+<descr>
+<![CDATA[ Attacker Network ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Wed, 24 Sep 2025 15:38:47 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>VICTIMSNET</name>
+<type>network</type>
+<address>192.168.30.0/24</address>
+<descr>
+<![CDATA[ Victim network ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Wed, 24 Sep 2025 15:40:27 -0400 ]]>
+</detail>
+</alias>
+<alias>
+<name>Internal_Networks</name>
+<type>network</type>
+<address>192.168.10.0/24 192.168.20.0/24 192.168.30.0/24</address>
+<descr>
+<![CDATA[ ALL SUBNETS. ]]>
+</descr>
+<detail>
+<![CDATA[ SOC/Management Net||Attacker Net||Victim Net ]]>
+</detail>
+</alias>
+<alias>
+<name>SECURITY_ONION</name>
+<type>host</type>
+<address>192.168.10.103</address>
+<descr>
+<![CDATA[ SOC2 ]]>
+</descr>
+<detail>
+<![CDATA[ Entry added Sun, 05 Oct 2025 08:51:16 -0400 ]]>
+</detail>
+</alias>
+</aliases>
