@@ -1,0 +1,94 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.0.6">
+  <diagram name="Page-1" id="13F5dK7caWND89LhGVCY">
+    <mxGraphModel dx="1426" dy="799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wQPs-7oQdlunYSo486Lu-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-30" target="wQPs-7oQdlunYSo486Lu-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-25" value="Victim&amp;nbsp;&lt;div&gt;Machines&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="575" width="360" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-24" value="SOC" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="30" y="575" width="340" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-1" target="wQPs-7oQdlunYSo486Lu-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-1" value="Internet" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/internet_cloud.svg;" vertex="1" parent="1">
+          <mxGeometry x="395" y="40" width="50" height="31.5" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-2" value="Router" style="image;html=1;image=img/lib/clip_art/networking/Wireless_Router_N_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="380" y="110" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-4" value="PFSense Firewall" style="image;html=1;image=img/lib/clip_art/networking/Firewall_02_128x128.png" vertex="1" parent="1">
+          <mxGeometry x="380" y="405" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-6" value="Windows 10&lt;div&gt;Victim&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="480" y="605" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-7" value="Oracle Linux&lt;div&gt;Splunk / Caldera&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="605" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-8" value="Kali Linux&lt;div&gt;Attacker&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="362.5" y="950" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-27" value="Internet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wQPs-7oQdlunYSo486Lu-10">
+          <mxGeometry x="-0.3537" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-14" value="Ubuntu Linux&lt;div&gt;Splunk Deployment Server&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="240" y="760" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-17" value="Remnux" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="50" y="765" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-18" value="Metasploitable 2&lt;div&gt;Victim&lt;/div&gt;" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="690" y="605" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-19" value="Security Onion" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.virtual_pc;" vertex="1" parent="1">
+          <mxGeometry x="240" y="605" width="115" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-28" value="Internet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wQPs-7oQdlunYSo486Lu-22">
+          <mxGeometry x="-0.1911" y="-3" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-4" target="wQPs-7oQdlunYSo486Lu-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-29" value="Internet" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="wQPs-7oQdlunYSo486Lu-23">
+          <mxGeometry x="-0.1882" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-26" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Home Lab Architecture&lt;/h1&gt;&lt;div&gt;This setup consists of multiple virtual machines contained within a host machine.&lt;/div&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-30" value="Host Machine" style="fontColor=#0066CC;verticalAlign=top;verticalLabelPosition=bottom;labelPosition=center;align=center;html=1;outlineConnect=0;fillColor=#CCCCCC;strokeColor=#6881B3;gradientColor=none;gradientDirection=north;strokeWidth=2;shape=mxgraph.networks.desktop_pc;" vertex="1" parent="1">
+          <mxGeometry x="405" y="260" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="wQPs-7oQdlunYSo486Lu-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;shape=link;" edge="1" parent="1" source="wQPs-7oQdlunYSo486Lu-2" target="wQPs-7oQdlunYSo486Lu-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
