@@ -134,4 +134,6 @@ This allows validation of detection rules against known attack techniques.
 
 # Author
 
-Security engineering lab project demonstrating practical SOC and detection engineering skills.
+Taji Abdullah  
+
+Security Analyst | SOC Operations | Detection Engineering
