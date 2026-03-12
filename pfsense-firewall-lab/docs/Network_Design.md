@@ -41,3 +41,14 @@ Purpose: Offensive security operations and penetration testing.
 - Vulnerability exploitation practice
 - Alert generation for SIEM
 - Endpoint detection and response testing
+---
+## VLAN 40 - Malware Analysis Network (192.168.40.0/24)
+
+**Purpose**: Isolated Network for Malware Analysis.
+
+| VM     | IP Address     | OS               | 
+|--------|----------------|------------------|
+| REMnux | 192.168.40.100 | Ubuntu 20.04 LTS | 
+
+**Key Functions**:
+- Isolated network to safely analyze malware samples

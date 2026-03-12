@@ -32,16 +32,18 @@ and threat detection.
 -----
 ## Network Architecture
 
+<div align="center">
+  <img src="docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+</div>
+
 The lab environment consists of segmented networks connected through the pfSense firewall.
 
 ---
 ## Firewall Rules
 
-Example rules implemented in the lab:
-
-| Interface | Source | Destination | Action | Purpose |
-| --------- | ------ | ----------- | ------ | ------- |
-|           |        |             |        |         |
+<div align="center">
+  <img src="screenshots/pfSense_rules_lan.png" alt="Network Architecture" style="width: 100%;">
+</div>
 
 ---
 ## Logging and Monitoring
