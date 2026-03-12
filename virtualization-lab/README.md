@@ -32,7 +32,13 @@ CPU: 16 vCPUs
 RAM: 64GB  
 Storage: 1.5TB SSD  
 
----  
+---
+## Virtualization Architecture
+<div align="center">
+  <img src="docs/virtualization_arch.svg" alt="Virtualization Architecture Diagram" style="width: 100%;">
+</div>
+
+---
 ## Virtual Machine Inventory 
   
 | VM Name         | OS                       | Purpose                              | RAM  | Network |
