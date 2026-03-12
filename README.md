@@ -58,6 +58,7 @@ and security monitoring using industry-standard tools.
 - **Burp Suite** - Web application security testing
 ---
 ## Documentation  
+[VMware Virtualization Lab](./virtualization-lab/)  
 [pfSense Firewall Lab](./pfsense-firewall-lab/)  
 [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
 [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
@@ -117,4 +118,4 @@ and security monitoring using industry-standard tools.
 
 ---
 ## Future Enhancements  
-[Roadmap]
+- Active Directory Lab
