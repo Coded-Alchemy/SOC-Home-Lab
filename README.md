@@ -58,7 +58,9 @@ and security monitoring using industry-standard tools.
 - **Burp Suite** - Web application security testing
 ---
 ## Documentation  
-[Links to detailed docs]  
+[pfSense Firewall Lab](./pfsense-firewall-lab/)  
+[Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
+[Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
 
 ---
 ## Use Cases  
