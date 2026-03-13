@@ -119,3 +119,4 @@ and security monitoring using industry-standard tools.
 ---
 ## Future Enhancements  
 - Active Directory Lab
+- SOAR Lab
