@@ -21,7 +21,11 @@ and security monitoring using industry-standard tools.
 
 ---
 ## Architecture  
-[High-level overview with diagram]  
+
+<div align="center">
+  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+</div>
+
 ### Infrastructure Overview
 - Hypervisor: VMware Workstation/ESXi
 - Network Firewall: pfSense
