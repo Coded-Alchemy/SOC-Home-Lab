@@ -66,6 +66,7 @@ and security monitoring using industry-standard tools.
 [pfSense Firewall Lab](./pfsense-firewall-lab/)  
 [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
 [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+[Adversary Emulation Lab](./adversary-emulation-lab/)
 
 ---
 ## Use Cases  
