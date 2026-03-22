@@ -62,12 +62,12 @@ and security monitoring using industry-standard tools.
 - **Burp Suite** - Web application security testing
 ---
 ## Documentation  
-[VMware Virtualization Lab](./virtualization-lab/)  
-[pfSense Firewall Lab](./pfsense-firewall-lab/)  
-[Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
-[Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
-[Active Directory Lab](./active-directory-lab/)
-[Adversary Emulation Lab](./adversary-emulation-lab/)
+- [VMware Virtualization Lab](./virtualization-lab/)  
+- [pfSense Firewall Lab](./pfsense-firewall-lab/)  
+- [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
+- [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+- [Active Directory Lab](./active-directory-lab/)
+- [Adversary Emulation Lab](./adversary-emulation-lab/)
 
 ---
 ## Use Cases  
