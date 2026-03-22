@@ -40,3 +40,118 @@ integrated to detect and respond to threats.
 - Sysmon (endpoint telemetry)
 - pfSense (firewall)
 - Caldera (adversary emulation)
+
+---
+
+## Active Directory Configuration
+
+### Domain Setup
+
+- Domain Name: `lab.local`
+- Single forest, single domain architecture
+- Domain Controller configured with DNS
+
+---
+
+### Organizational Unit (OU) Structure
+
+```
+corp.local
+│
+├── Users
+├── Computers
+├── Servers
+└── Service Accounts
+```
+
+---
+
+### Users & Groups
+
+- Standard user accounts created for simulation
+- Domain Admins group configured
+- Service accounts for internal services
+
+---
+
+## Group Policy Configuration
+
+Group Policy Objects (GPOs) were implemented to enforce security controls and enable logging.
+
+### Security Policies
+
+- Password complexity requirements enabled
+- Account lockout policy configured
+
+### Auditing & Logging
+
+- Logon auditing enabled
+- PowerShell logging enabled
+- Command-line auditing enabled
+
+---
+
+## 📡 Logging & Monitoring Pipeline
+
+### Log Flow
+
+```
+Windows Endpoint → Sysmon → Splunk Forwarder → Splunk Indexer
+```
+
+### Data Collected
+
+- Process creation events
+- Authentication logs
+- PowerShell execution logs
+- Network connections
+
+---
+
+## Adversary Simulation
+
+Attack scenarios were executed from MITRE Caldera C2 server to simulate real-world threats.
+
+### Techniques Simulated
+
+
+### Framework Mapping
+
+---
+
+## 🧠 Detection Engineering
+
+Detection logic was developed based on observed attacker behavior.
+
+### Example Detections
+
+- Suspicious PowerShell execution
+- LSASS access attempts
+- Multiple failed login attempts
+- Privileged account abuse
+
+---
+
+## Screenshots
+
+> Add screenshots here to demonstrate:
+
+- Active Directory Users & Computers
+- Group Policy configurations
+- Splunk dashboards
+- Attack logs and detections
+
+---
+
+## ✅ Key Takeaways
+
+- Built a functional enterprise-style identity infrastructure
+- Implemented centralized logging and monitoring
+- Simulated real-world attack techniques
+- Developed detection logic aligned with attacker behavior
+
+---
+
+## Future Improvements
+
+- Simulate advanced attack chains
