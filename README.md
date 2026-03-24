@@ -21,7 +21,11 @@ and security monitoring using industry-standard tools.
 
 ---
 ## Architecture  
-[High-level overview with diagram]  
+
+<div align="center">
+  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+</div>
+
 ### Infrastructure Overview
 - Hypervisor: VMware Workstation/ESXi
 - Network Firewall: pfSense
@@ -58,7 +62,11 @@ and security monitoring using industry-standard tools.
 - **Burp Suite** - Web application security testing
 ---
 ## Documentation  
-[Links to detailed docs]  
+[VMware Virtualization Lab](./virtualization-lab/)  
+[pfSense Firewall Lab](./pfsense-firewall-lab/)  
+[Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
+[Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+[Adversary Emulation Lab](./adversary-emulation-lab/)
 
 ---
 ## Use Cases  
@@ -115,4 +123,4 @@ and security monitoring using industry-standard tools.
 
 ---
 ## Future Enhancements  
-[Roadmap]
+- Active Directory Lab
