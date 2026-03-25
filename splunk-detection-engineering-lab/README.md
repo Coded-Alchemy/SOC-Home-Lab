@@ -1,26 +1,30 @@
-# Splunk Detection Engineering Lab
+# Splunk SOC Lab – Security Engineering Architecture
 
-A hands-on security operations lab built to simulate a real enterprise logging and detection environment using Splunk.
+## Overview
+This project simulates a production-grade Security Operations Center (SOC) environment using Splunk. It demonstrates 
+log ingestion, detection engineering, adversary simulation, and SIEM operations in a controlled home lab.
 
-This project demonstrates how to deploy and manage log collection across Linux and Windows systems, collect advanced 
-telemetry using Sysmon, and build security detections based on attacker techniques.
+The goal is to mirror real-world enterprise architecture and workflows used by security engineers and SOC analysts.
 
 ---
 
-# Lab Architecture
+## Architecture Summary
 
-The lab environment consists of:
-
-* Splunk Enterprise (Indexer + Deployment Server)
-* Linux servers with Universal Forwarder
-* Windows endpoints with Universal Forwarder
+### Core Components
+* Splunk Enterprise (Indexer + Deployment Server + Search Head + License Manager)
+* Splunk Universal Forwarders (Windows + Linux)
 * Sysmon for enhanced Windows telemetry
 
-Logs are centrally collected and analyzed in Splunk to support detection engineering workflows.
+### Data Flow
+1. Endpoints generate logs
+2. Universal Forwarders collect and send data
+3. Splunk Indexer ingests and indexes logs
+4. Search Head enables detection + analysis
+5. License Manager enforces ingestion limits
 
 ---
 
-# Features
+## Features
 
 * Centralized log collection
 * Splunk Deployment Server management
@@ -32,7 +36,7 @@ Logs are centrally collected and analyzed in Splunk to support detection enginee
 
 ---
 
-# Technologies Used
+## Technologies Used
 
 * Splunk Enterprise
 * Splunk Universal Forwarder
@@ -43,7 +47,63 @@ Logs are centrally collected and analyzed in Splunk to support detection enginee
 
 ---
 
-# Deployment Server Configuration
+## Splunk Licensing Configuration
+
+### Overview
+In a production SIEM environment, proper licensing is critical to ensure uninterrupted log ingestion and search 
+capabilities. This lab includes full license configuration to simulate enterprise-scale operations.
+
+### 🧠 Why Licensing Matters
+- Removes default ingestion limits
+- Prevents search restrictions
+- Enables realistic SOC data volume
+- Aligns with enterprise deployment practices
+
+### ⚙️ License Setup Process
+
+#### Step 1 — Access Licensing
+```
+Settings → Licensing
+```
+
+#### Step 2 — Upload License
+- Click "Add License"
+- Upload `.lic` file
+- Install and restart Splunk
+
+#### Step 3 — Verify License
+```bash
+./splunk list licenses
+```
+
+#### Step 4 — Monitor Usage
+```spl
+index=_internal source=*license_usage.log
+```
+
+#### Step 5 — Detect Violations
+```spl
+index=_internal source=*license_usage.log type="Violation"
+```
+
+### License Architecture (Enterprise Model)
+
+- License Manager centrally controls usage
+- Indexers report consumption
+- Violations tracked across all nodes
+
+In this lab:
+- Single-node deployment acts as License Manager + Indexer
+
+### 🧪 Validation Results
+- License successfully installed
+- No ingestion limits encountered
+- Forwarders sending logs at full capacity
+- Internal logs confirm usage tracking
+
+---
+
+## Deployment Server Configuration
 
 Apps are deployed using Splunk server classes.
 
@@ -73,7 +133,7 @@ whitelist.0 = win*
 
 ---
 
-# Example Logs Collected
+## Example Logs Collected
 
 Linux
 
@@ -94,7 +154,7 @@ Sysmon
 
 ---
 
-# Detection Examples
+## Detection Examples
 
 Example detection query for suspicious PowerShell:
 
@@ -106,7 +166,7 @@ index=windows EventCode=4688
 
 ---
 
-# Attack Simulation
+## Attack Simulation
 
 Attack activity is simulated using Caldera to generate realistic adversary behavior.
 
@@ -114,7 +174,7 @@ This allows validation of detection rules against known attack techniques.
 
 ---
 
-# Project Goals
+## Project Goals
 
 * Build a realistic SOC monitoring environment
 * Practice detection engineering
@@ -123,17 +183,9 @@ This allows validation of detection rules against known attack techniques.
 
 ---
 
-# Future Improvements
+## Future Improvements
 
 * Detection dashboards
 * Automated alerts
 * Threat hunting queries
 * Integration with MITRE ATT&CK framework
-
----
-
-# Author
-
-Taji Abdullah  
-
-Security Analyst | SOC Operations | Detection Engineering
