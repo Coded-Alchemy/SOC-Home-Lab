@@ -11,7 +11,7 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 ## Architecture Summary
 
 <div align="center">
-  <img src="/architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 100%;">
+  <img src="architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 100%;">
 </div>
 
 ### Core Components
