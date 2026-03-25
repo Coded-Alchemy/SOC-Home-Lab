@@ -1,3 +1,245 @@
+<div align="center">
+
+# Linux Splunk Universal Forwarder Deployment
+
+### Enterprise Log Ingestion Pipeline | Home SOC Lab
+
+</div>
+
+---
+
+# Overview
+
+This project documents the deployment and configuration of the Splunk Universal Forwarder on Linux hosts within a 
+simulated enterprise SOC environment.
+
+Goal: build a **reliable, scalable log ingestion pipeline** streaming Linux telemetry into a centralized SIEM for 
+detection engineering and threat hunting.
+
+---
+
+# Enterprise Architecture
+
+## High-Level Diagram
+
+```mermaid
+flowchart LR
+    A[Linux Host\nUniversal Forwarder] -->|Syslog + Audit Logs| B[Splunk Indexer]
+    B --> C[Splunk Search Head]
+    C --> D[Security Analyst]
+```
+
+---
+
+## Detailed Security Architecture
+
+```mermaid
+flowchart TB
+
+    subgraph Linux_Endpoint
+        UF[Universal Forwarder]
+        SYSLOG[/var/log/*]
+        AUTH[/var/log/auth.log]
+        AUDIT[auditd Logs]
+    end
+
+    subgraph Network
+        FW[Firewall\nPort 9997]
+    end
+
+    subgraph Splunk
+        IDX[Indexer\nStorage & Parsing]
+        SH[Search Head\nDashboards & Detections]
+    end
+
+    SYSLOG --> UF
+    AUTH --> UF
+    AUDIT --> UF
+    UF --> FW
+    FW --> IDX
+    IDX --> SH
+```
+
+---
+
+# Prerequisites
+
+* Linux host (Ubuntu, Debian, RHEL, Fedora, etc.)
+* Splunk Indexer reachable
+* Port **9997** open on indexer
+* Root/sudo privileges
+* auditd (recommended)
+
+---
+
+# Installation
+
+## 1. Download
+
+```bash
+wget https://download.splunk.com/products/universalforwarder/releases/<VERSION>/linux/splunkforwarder-<VERSION>-Linux-x86_64.tgz
+```
+
+---
+
+## 2. Install
+
+```bash
+tar -xvf splunkforwarder-*.tgz -C /opt
+```
+
+---
+
+## 3. Enable Boot Start
+
+```bash
+sudo /opt/splunkforwarder/bin/splunk enable boot-start
+```
+
+---
+
+## 4. Start Forwarder
+
+```bash
+sudo /opt/splunkforwarder/bin/splunk start --accept-license
+```
+
+---
+
+# Configuration
+
+## outputs.conf
+
+```ini
+[tcpout]
+defaultGroup = indexer_group
+
+[tcpout:indexer_group]
+server = <INDEXER_IP>:9997
+```
+
+---
+
+## inputs.conf
+
+### System Logs
+
+```ini
+[monitor:///var/log/syslog]
+index = linux
+
+[monitor:///var/log/auth.log]
+index = linux
+```
+
+### Auditd Logs (Recommended)
+
+```ini
+[monitor:///var/log/audit/audit.log]
+index = linux_audit
+```
+
+---
+
+## Apply Config & Restart
+
+```bash
+sudo /opt/splunkforwarder/bin/splunk restart
+```
+
+---
+
+# Verification
+
+## On Forwarder
+
+```bash
+/opt/splunkforwarder/bin/splunk list forward-server
+```
+
+Expected:
+
+```
+Active forwards:
+    <INDEXER_IP>:9997
+```
+
+---
+
+## On Splunk
+
+```spl
+index=linux
+```
+
+```spl
+index=linux_audit
+```
+
+---
+
+# Troubleshooting
+
+## No Logs Appearing
+
+* File path incorrect
+* Permissions on /var/log
+* Forwarder not running
+
+---
+
+## Forwarder Not Connecting
+
+```bash
+splunk list forward-server
+```
+
+* outputs.conf misconfigured
+* Firewall blocking 9997
+
+---
+
+## Permission Issues
+
+* Use sudo/root
+* Ensure forwarder can read log files
+
+---
+
+# Security Considerations
+
+* Use SSL (tcpout:ssl)
+* Restrict indexer ports
+* Run forwarder as least-privileged user where possible
+
+---
+
+# Skills Demonstrated
+
+* Linux Log Ingestion
+* SIEM Engineering
+* Log Pipeline Design
+* auditd Monitoring
+* Troubleshooting & Debugging
+* Detection Engineering Foundations
+
+---
+
+# Key Takeaway
+
+This project demonstrates the ability to deploy and operate a **production-style Linux logging pipeline**, feeding 
+high-value telemetry into a SIEM for real-world security operations.
+
+---
+
+<div align="center">
+
+### 🛡️ Built for Detection Engineering & SOC Excellence
+
+</div>
+
+
+-------
 As of Splunk 9.1, the universal forwarder installs a new least privileged user called splunkfwd. This means that the 
 user name for Splunk Enterprise, "Splunk", and your universal forwarder user name, "splunkfwd", will be different. Its 
 recommend that you implement the splunkfwd user, however, if your system requires that your Splunk Enterprise and 
