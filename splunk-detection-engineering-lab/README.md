@@ -10,6 +10,10 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 
 ## Architecture Summary
 
+<div align="center">
+  <img src="/architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 100%;">
+</div>
+
 ### Core Components
 * Splunk Enterprise (Indexer + Deployment Server + Search Head + License Manager)
 * Splunk Universal Forwarders (Windows + Linux)
