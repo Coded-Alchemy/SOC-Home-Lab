@@ -1,22 +1,26 @@
-# Splunk Detection Engineering Lab
+# Splunk SOC Lab – Security Engineering Architecture
 
-A hands-on security operations lab built to simulate a real enterprise logging and detection environment using Splunk.
+## Overview
+This project simulates a production-grade Security Operations Center (SOC) environment using Splunk. It demonstrates 
+log ingestion, detection engineering, adversary simulation, and SIEM operations in a controlled home lab.
 
-This project demonstrates how to deploy and manage log collection across Linux and Windows systems, collect advanced 
-telemetry using Sysmon, and build security detections based on attacker techniques.
+The goal is to mirror real-world enterprise architecture and workflows used by security engineers and SOC analysts.
 
 ---
 
-# Lab Architecture
+# Architecture Summary
 
-The lab environment consists of:
-
-* Splunk Enterprise (Indexer + Deployment Server)
-* Linux servers with Universal Forwarder
-* Windows endpoints with Universal Forwarder
+### Core Components
+* Splunk Enterprise (Indexer + Deployment Server + Search Head + License Manager)
+* Splunk Universal Forwarders (Windows + Linux)
 * Sysmon for enhanced Windows telemetry
 
-Logs are centrally collected and analyzed in Splunk to support detection engineering workflows.
+### Data Flow
+1. Endpoints generate logs
+2. Universal Forwarders collect and send data
+3. Splunk Indexer ingests and indexes logs
+4. Search Head enables detection + analysis
+5. License Manager enforces ingestion limits
 
 ---
 
