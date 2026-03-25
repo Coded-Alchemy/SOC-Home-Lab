@@ -53,13 +53,13 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 In a production SIEM environment, proper licensing is critical to ensure uninterrupted log ingestion and search 
 capabilities. This lab includes full license configuration to simulate enterprise-scale operations.
 
-### 🧠 Why Licensing Matters
+### Why Licensing Matters
 - Removes default ingestion limits
 - Prevents search restrictions
 - Enables realistic SOC data volume
 - Aligns with enterprise deployment practices
 
-### ⚙️ License Setup Process
+### License Setup Process
 
 #### Step 1 — Access Licensing
 ```
@@ -95,7 +95,7 @@ index=_internal source=*license_usage.log type="Violation"
 In this lab:
 - Single-node deployment acts as License Manager + Indexer
 
-### 🧪 Validation Results
+### Validation Results
 - License successfully installed
 - No ingestion limits encountered
 - Forwarders sending logs at full capacity
