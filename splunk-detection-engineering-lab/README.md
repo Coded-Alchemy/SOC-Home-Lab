@@ -51,6 +51,17 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 
 ---
 
+## Documentation
+
+- [Windows Universal Forwarder](docs/WindowsUniversalForwarder.md) 
+- [Linux Universal Forwarder](docs/LinuxUniversalForwarder.md)
+- [Deployment Server Documentation](docs/DeploymentServerDocumentation.md)
+- [Deployment Commands](docs/DeploymentCommands.md)
+- [Sysmon Documentaion](docs/SysmonInstallation.md)
+- [Troubleshooting](docs/Troubleshooting.md)
+
+---
+
 ## Splunk Licensing Configuration
 
 ### Overview
