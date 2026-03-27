@@ -110,3 +110,12 @@ Generate test activity:
 powershell -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAKQ==
 ```
 Then confirm logs appear in Splunk.
+
+---
+
+## Security Engineering Considerations
+
+- Avoid logging everything (reduces noise)
+- Tune configuration to minimize false positives
+- Monitor endpoint performance impact
+- Version control Sysmon configuration
