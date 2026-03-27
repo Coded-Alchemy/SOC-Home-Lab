@@ -44,7 +44,7 @@ integrated to detect and respond to threats.
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Active Directory Domain Services (AD DS)
 - Windows Server 2019/2022
@@ -56,7 +56,7 @@ integrated to detect and respond to threats.
 
 ---
 
-## 🏢 Active Directory Configuration
+## Active Directory Configuration
 
 ### Domain Setup
 
@@ -87,7 +87,7 @@ corp.local
 
 ---
 
-## 🔐 Group Policy Configuration
+## Group Policy Configuration
 
 Group Policy Objects (GPOs) were implemented to enforce security controls and enable logging.
 
@@ -104,7 +104,7 @@ Group Policy Objects (GPOs) were implemented to enforce security controls and en
 
 ---
 
-## 📡 Logging & Monitoring Pipeline
+## Logging & Monitoring Pipeline
 
 ### Log Flow
 
@@ -121,7 +121,7 @@ Windows Endpoint → Sysmon → Splunk Forwarder → Splunk Indexer
 
 ---
 
-## ⚔️ Adversary Simulation
+## Adversary Simulation
 
 Attack scenarios were executed from the Kali Linux machine to simulate real-world threats.
 
@@ -141,7 +141,7 @@ Mapped to MITRE ATT&CK techniques:
 
 ---
 
-## 🧠 Detection Engineering
+## Detection Engineering
 
 Detection logic was developed based on observed attacker behavior.
 
@@ -154,7 +154,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## 📊 Screenshots
+## Screenshots
 
 > Add screenshots here to demonstrate:
 
@@ -165,7 +165,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## ✅ Key Takeaways
+## Key Takeaways
 
 - Built a functional enterprise-style identity infrastructure
 - Implemented centralized logging and monitoring
@@ -174,7 +174,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## 🚀 Future Improvements
+## Future Improvements
 
 - Integrate automated detection deployment (Detection-as-Code)
 - Expand environment with additional endpoints
@@ -183,7 +183,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## 📎 Notes
+## Notes
 
 This lab is part of a broader security engineering portfolio focused on detection pipelines, 
 SIEM engineering, and adversary emulation.
