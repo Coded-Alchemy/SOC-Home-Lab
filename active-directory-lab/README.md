@@ -20,7 +20,7 @@ integrated to detect and respond to threats.
 ### High-Level Design
 
 ```
-                         [ Kali Linux Attacker ]
+                         [ MITRE Caldera Attacker ]
                                    |
                              ( WAN / NAT )
                                    |
@@ -40,7 +40,7 @@ integrated to detect and respond to threats.
 - **Domain Controller**: Hosts Active Directory Domain Services (AD DS), DNS, and authentication services
 - **Windows Endpoint**: Domain-joined workstation used to simulate user activity
 - **Splunk Server**: Centralized log aggregation and detection platform
-- **Kali Linux**: Used for adversary emulation and attack simulation
+- **MITRE Caldera**: Used for adversary emulation and attack simulation
 
 ---
 
@@ -52,7 +52,7 @@ integrated to detect and respond to threats.
 - Splunk (SIEM)
 - Sysmon (endpoint telemetry)
 - pfSense (firewall)
-- Kali Linux (attacker machine)
+- MITRE Caldera (adversary emulation)
 
 ---
 
@@ -60,7 +60,7 @@ integrated to detect and respond to threats.
 
 ### Domain Setup
 
-- Domain Name: `corp.local`
+- Domain Name: `lab.local`
 - Single forest, single domain architecture
 - Domain Controller configured with DNS
 
@@ -69,7 +69,7 @@ integrated to detect and respond to threats.
 ### Organizational Unit (OU) Structure
 
 ```
-corp.local
+lab.local
 │
 ├── Users
 ├── Computers
@@ -121,9 +121,9 @@ Windows Endpoint → Sysmon → Splunk Forwarder → Splunk Indexer
 
 ---
 
-## Adversary Simulation
+## Adversary Emulation
 
-Attack scenarios were executed from the Kali Linux machine to simulate real-world threats.
+Attack scenarios were executed from the MITRE Caldera C2 server to simulate real-world threats.
 
 ### Techniques Simulated
 
