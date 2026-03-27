@@ -1,4 +1,4 @@
-# Active Directory Home Lab
+# Active Directory Lab
 
 ## Overview
 
@@ -17,7 +17,20 @@ integrated to detect and respond to threats.
 
 ## Architecture
 
-[Add diagram]
+### High-Level Design
+
+```
+                         [ Kali Linux Attacker ]
+                                   |
+                             ( WAN / NAT )
+                                   |
+                            [ pfSense Firewall ]
+                                   |
+        -----------------------------------------------------
+        |                        |                          |
+ [ Domain Controller ]     [ Windows 10 Client ]     [ Splunk Server ]
+     (AD DS / DNS)            (Endpoint)               (SIEM)
+```
 
 ---
 
@@ -31,23 +44,23 @@ integrated to detect and respond to threats.
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - Active Directory Domain Services (AD DS)
-- Windows Server 2025
+- Windows Server 2019/2022
 - Windows 10/11
 - Splunk (SIEM)
 - Sysmon (endpoint telemetry)
 - pfSense (firewall)
-- Caldera (adversary emulation)
+- Kali Linux (attacker machine)
 
 ---
 
-## Active Directory Configuration
+## 🏢 Active Directory Configuration
 
 ### Domain Setup
 
-- Domain Name: `lab.local`
+- Domain Name: `corp.local`
 - Single forest, single domain architecture
 - Domain Controller configured with DNS
 
@@ -74,7 +87,7 @@ corp.local
 
 ---
 
-## Group Policy Configuration
+## 🔐 Group Policy Configuration
 
 Group Policy Objects (GPOs) were implemented to enforce security controls and enable logging.
 
@@ -108,14 +121,23 @@ Windows Endpoint → Sysmon → Splunk Forwarder → Splunk Indexer
 
 ---
 
-## Adversary Simulation
+## ⚔️ Adversary Simulation
 
-Attack scenarios were executed from MITRE Caldera C2 server to simulate real-world threats.
+Attack scenarios were executed from the Kali Linux machine to simulate real-world threats.
 
 ### Techniques Simulated
 
+- Credential Dumping
+- Pass-the-Hash
+- Privilege Escalation
+- Lateral Movement
 
 ### Framework Mapping
+
+Mapped to MITRE ATT&CK techniques:
+
+- T1003 – Credential Dumping
+- T1021 – Remote Services
 
 ---
 
@@ -132,7 +154,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Screenshots
+## 📊 Screenshots
 
 > Add screenshots here to demonstrate:
 
@@ -152,6 +174,16 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Future Improvements
+## 🚀 Future Improvements
 
+- Integrate automated detection deployment (Detection-as-Code)
+- Expand environment with additional endpoints
+- Add EDR tooling
 - Simulate advanced attack chains
+
+---
+
+## 📎 Notes
+
+This lab is part of a broader security engineering portfolio focused on detection pipelines, 
+SIEM engineering, and adversary emulation.
