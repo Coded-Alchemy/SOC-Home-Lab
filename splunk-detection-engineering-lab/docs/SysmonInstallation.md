@@ -1,6 +1,7 @@
 # Sysmon Deployment & Telemetry Engineering  
   
 ### Overview  
+
 This project documents the deployment and configuration of Sysmon (System Monitor) to enhance endpoint visibility   
 within a SOC lab environment.  
   
@@ -43,6 +44,7 @@ unzip Sysmon.zip
 cd Sysmon  
 ```  
 Or download manually from Microsoft Sysinternals.  
+[Sysmon Documentation](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
   
 ### 2. Create Configuration File  
 Use a production-grade config:  
