@@ -80,7 +80,10 @@ Applications and Services Logs
 → Sysmon  
 → Operational  
 ```  
-  
+<div align="center">
+  <img src="../screenshots/sysmon_event_viewer.png" alt="Sysmon Event Viewer" style="width: 50%;">
+</div>
+
 ---    
 ## Key Event IDs for Detection Engineering
 
