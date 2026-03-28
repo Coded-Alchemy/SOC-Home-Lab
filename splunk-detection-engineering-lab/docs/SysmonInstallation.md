@@ -59,13 +59,17 @@ Sysmon64.exe -accepteula -i sysmon-config.xml
 ```  
 
 <div align="center">
-  <img src="../screenshots/sysmon_install.png" alt="Sysmon Installation" style="width: 100%;">
+  <img src="../screenshots/sysmon_install.png" alt="Sysmon Installation" style="width: 50%;">
 </div>
   
 Verify installation:  
 ```commandline  
 Get-Service Sysmon64  
 ```  
+
+<div align="center">
+  <img src="../screenshots/sysmon_get_service.png" alt="Sysmon GetService" style="width: 50%;">
+</div>
   
 ### 4. Confirm Logging  
 Navigate in Event Viewer:  
