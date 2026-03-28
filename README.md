@@ -1,10 +1,13 @@
-# SOC-Home-Lab    
+# SOC-Home-Lab   
+
 This home lab simulates a complete Security Operations Center (SOC) environment for hands-on cybersecurity training.     
 The lab provides practical experience in threat detection, incident response, penetration testing, adversary emulation,     
 and security monitoring using industry-standard tools.  
 
 ---
-## Primary Objectives:  
+
+## Primary Objectives: 
+
 - Simulate real-world attack and defense scenarios  
 - Practice SOC analyst workflows and procedures  
 - Develop threat detection and incident response skills  
@@ -13,6 +16,7 @@ and security monitoring using industry-standard tools.
 - Implement Detection-as-Code (DaC) practices with CI/CD pipeline  
  
 ---
+
 ## Features  
 - pfSense Firewall isolation to create a safe secluded environment  
 - Detections as Code Pipeline  
@@ -20,6 +24,7 @@ and security monitoring using industry-standard tools.
 - Network Segmentation  
 
 ---
+
 ## Architecture  
 
 <div align="center">
@@ -27,12 +32,14 @@ and security monitoring using industry-standard tools.
 </div>
 
 ### Infrastructure Overview
+
 - Hypervisor: VMware Workstation/ESXi
 - Network Firewall: pfSense
 - Network Segmentation: 4 isolated VLANs
 - Total VMs: 8 (with expansion planned)
 - Detection Pipeline: GitHub Actions + Terraform + Sigma
 - Self-Hosted Runner: Oracle Linux (CI/CD automation)
+
 ### Tools & Technologies
 
 #### Security Information and Event Management (SIEM)
@@ -60,15 +67,21 @@ and security monitoring using industry-standard tools.
 - **Kali Linux** - Comprehensive penetration testing platform
 - **Metasploit Framework** - Exploitation framework
 - **Burp Suite** - Web application security testing
----
-## Documentation  
-[VMware Virtualization Lab](./virtualization-lab/)  
-[pfSense Firewall Lab](./pfsense-firewall-lab/)  
-[Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
-[Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
 
 ---
+
+## Documentation  
+
+- [VMware Virtualization Lab](./virtualization-lab/)  
+- [pfSense Firewall Lab](./pfsense-firewall-lab/)  
+- [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
+- [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+- [Active Directory Lab](./active-directory-lab/)  
+
+---
+
 ## Use Cases  
+
 1. **Threat Detection & Response**
 	- Real-time alert generation and analysis
 	- SIEM rule creation and tuning
@@ -102,8 +115,11 @@ and security monitoring using industry-standard tools.
 	- Web application testing
 	- Password cracking and credential attacks
 	- Post-exploitation and privilege escalation
+
 ---
+
 ## Skills Demonstrated  
+
 - SIEM Administration - Splunk deployment and configuration  
 - Network Security Monitoring - IDS/IPS implementation  
 - Penetration Testing - Full attack lifecycle execution  
@@ -121,5 +137,8 @@ and security monitoring using industry-standard tools.
 - Automation & Scripting - Python, Bash, GitHub Actions  
 
 ---
+
 ## Future Enhancements  
+
 - Active Directory Lab
+- SOAR Lab
