@@ -46,7 +46,7 @@ cd Sysmon
 Or download manually from Microsoft Sysinternals.  
 [Sysmon Documentation](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
   
-### 2. Create Configuration File  
+### 2. Obtain Configuration File  
 Use a production-grade config:  
 - SwiftOnSecurity Sysmon config  
 - Olaf Hartong modular config  
@@ -57,6 +57,10 @@ Example: ```sysmon-config.xml```
 ```commandline  
 Sysmon64.exe -accepteula -i sysmon-config.xml  
 ```  
+
+<div align="center">
+  <img src="../screenshots/sysmon_install.png" alt="Sysmon Installation" style="width: 100%;">
+</div>
   
 Verify installation:  
 ```commandline  
