@@ -33,6 +33,7 @@ and security monitoring using industry-standard tools.
 - Total VMs: 8 (with expansion planned)
 - Detection Pipeline: GitHub Actions + Terraform + Sigma
 - Self-Hosted Runner: Oracle Linux (CI/CD automation)
+
 ### Tools & Technologies
 
 #### Security Information and Event Management (SIEM)
@@ -60,12 +61,15 @@ and security monitoring using industry-standard tools.
 - **Kali Linux** - Comprehensive penetration testing platform
 - **Metasploit Framework** - Exploitation framework
 - **Burp Suite** - Web application security testing
+
 ---
+
 ## Documentation  
-[VMware Virtualization Lab](./virtualization-lab/)  
-[pfSense Firewall Lab](./pfsense-firewall-lab/)  
-[Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
-[Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+- [VMware Virtualization Lab](./virtualization-lab/)  
+- [pfSense Firewall Lab](./pfsense-firewall-lab/)  
+- [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
+- [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
+- [Active Directory Lab](./active-directory-lab/)  
 
 ---
 ## Use Cases  
@@ -102,7 +106,9 @@ and security monitoring using industry-standard tools.
 	- Web application testing
 	- Password cracking and credential attacks
 	- Post-exploitation and privilege escalation
+
 ---
+
 ## Skills Demonstrated  
 - SIEM Administration - Splunk deployment and configuration  
 - Network Security Monitoring - IDS/IPS implementation  
@@ -121,5 +127,6 @@ and security monitoring using industry-standard tools.
 - Automation & Scripting - Python, Bash, GitHub Actions  
 
 ---
+
 ## Future Enhancements  
 - Active Directory Lab
