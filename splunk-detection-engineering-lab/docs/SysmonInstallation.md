@@ -66,6 +66,10 @@ Verify installation:
 ```commandline  
 Get-Service Sysmon64  
 ```  
+
+<div align="center">
+  <img src="../screenshots/sysmon_get_service.png" alt="Sysmon GetService" style="width: 100%;">
+</div>
   
 ### 4. Confirm Logging  
 Navigate in Event Viewer:  
