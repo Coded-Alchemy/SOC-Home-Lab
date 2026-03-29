@@ -23,7 +23,7 @@ and security monitoring using industry-standard tools.
 ## Architecture  
 
 <div align="center">
-  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 50%;">
 </div>
 
 ### Infrastructure Overview
