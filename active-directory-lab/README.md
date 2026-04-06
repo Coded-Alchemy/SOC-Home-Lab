@@ -19,18 +19,9 @@ integrated to detect and respond to threats.
 
 ### High-Level Design
 
-```
-                         [ MITRE Caldera Attacker ]
-                                   |
-                             ( WAN / NAT )
-                                   |
-                            [ pfSense Firewall ]
-                                   |
-        -----------------------------------------------------
-        |                        |                          |
- [ Domain Controller ]     [ Windows 10 Client ]     [ Splunk Server ]
-     (AD DS / DNS)            (Endpoint)               (SIEM)
-```
+<div align="center">
+  <img src="arch/active_directory_arch.png" alt="Active Directory Architecture" style="width: 50%;">
+</div>
 
 ---
 
