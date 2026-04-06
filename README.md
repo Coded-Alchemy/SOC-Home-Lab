@@ -29,7 +29,7 @@ and security monitoring using industry-standard tools.
 ## Architecture  
 
 <div align="center">
-  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 50%;">
 </div>
 
 ### Infrastructure Overview
@@ -78,6 +78,7 @@ and security monitoring using industry-standard tools.
 - [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
 - [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
 - [Adversary Emulation Lab](./adversary-emulation-lab/)
+- [Troubleshooting](./docs/Troubleshooting.md)
 
 ---
 
