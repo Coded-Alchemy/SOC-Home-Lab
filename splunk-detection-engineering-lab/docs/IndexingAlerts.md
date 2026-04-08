@@ -2,7 +2,7 @@
 
 ---
 
-### 1) Define alerts schema
+## 1) Define alerts schema
 
 Standardize fields, keep naming consistent or nothing will correlate later.
 ```json
@@ -18,13 +18,13 @@ Standardize fields, keep naming consistent or nothing will correlate later.
 }
 ```
 
-### 2) Create Index Alerts
+## 2) Create Index Alerts
 
 Create new index "alerts"
 
 ---
 
-## Method 1) Saved Searches → Alerts → Write to Index
+### Method 1) Saved Searches → Alerts → Write to Index
 
 **Example Detection**
 ```commandline
@@ -63,7 +63,7 @@ Now you have a continuous detection pipeline.
 
 ---
 
-## Method 2) Sigma Pipeline -> alerts index
+### Method 2) Sigma Pipeline -> alerts index
 
 This home lab project already has a DaC(Detections as Code) pipeline, the next step is to upgrade it.
 
@@ -73,4 +73,52 @@ Append this to the SPL output
 | eval mitre_technique="<technique>"
 | eval severity="<level>"
 | collect index=alerts
+```
+
+---
+
+## 3) Testing
+
+Run this manually:
+```commandline
+index=sysmon EventCode=1 CommandLine="*powershell*"
+| head 5
+| eval detection_name="Test Detection"
+| eval mitre_technique="T1059.001"
+| eval severity="low"
+| eval host=Computer
+| collect index=alerts
+```
+
+Verify:
+```commandline
+index=alerts
+| table _time detection_name mitre_technique severity host
+```
+
+---
+
+## 4) Normalize data
+
+Fix inconsistencies early:
+```commandline
+index=alerts
+| eval mitre_technique=upper(mitre_technique)
+| eval severity=lower(severity)
+```
+
+---
+
+## 5) Align Attack data
+
+```commandline
+index=alerts
+| stats count by mitre_technique
+```
+
+should match:
+
+```commandline
+index=attacks
+| stats count by technique
 ```
