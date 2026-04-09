@@ -143,3 +143,4 @@ and security monitoring using industry-standard tools.
 - Active Directory Lab
 - SOAR Lab
 - Malware Analysis Lab
+- ICS Lab
