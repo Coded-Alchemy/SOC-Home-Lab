@@ -127,7 +127,7 @@ http://<your-ip>:8000
 Log in with the admin credentials you created during installation.
 
 <!-- SCREENSHOT PLACEHOLDER -->
-> 📸 **[Screenshot: Splunk Login Page]**
+> ![Splunk Login Page](../screenshots/splunk_login.png)
 
 ---
 
@@ -157,7 +157,7 @@ sudo firewall-cmd --reload
 ```
 
 <!-- SCREENSHOT PLACEHOLDER -->
-> 📸 **[Screenshot: Receiving Port Configuration]**
+> ![Splunk Login Page](../screenshots/splunk_receiving_port.png)
 
 ---
 
