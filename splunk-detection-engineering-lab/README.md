@@ -11,7 +11,7 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 ## Architecture Summary
 
 <div align="center">
-  <img src="architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 100%;">
+  <img src="architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 10%;">
 </div>
 
 ### Core Components
@@ -57,7 +57,8 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 - [Linux Universal Forwarder](docs/LinuxUniversalForwarder.md)
 - [Deployment Server Documentation](docs/DeploymentServerDocumentation.md)
 - [Deployment Commands](docs/DeploymentCommands.md)
-- [Sysmon Documentaion](docs/SysmonInstallation.md)
+- [Sysmon Documentation](docs/SysmonInstallation.md)
+- [Ingesting pfSense Logs](docs/pfsense_to_splunk.md)
 - [Troubleshooting](docs/Troubleshooting.md)
 
 ---
