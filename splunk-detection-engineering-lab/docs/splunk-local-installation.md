@@ -127,7 +127,7 @@ http://<your-ip>:8000
 Log in with the admin credentials you created during installation.
 
 <!-- SCREENSHOT PLACEHOLDER -->
-> ![Splunk Login Page](../screenshots/splunk_login.png)
+> ![Splunk Login Page](screenshots/splunk_login.png)
 
 ---
 
