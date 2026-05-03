@@ -1,4 +1,4 @@
-# SOC-Home-Lab   
+# SOC-Home-Lab    
 
 This home lab simulates a complete Security Operations Center (SOC) environment for hands-on cybersecurity training.     
 The lab provides practical experience in threat detection, incident response, penetration testing, adversary emulation,     
@@ -6,7 +6,7 @@ and security monitoring using industry-standard tools.
 
 ---
 
-## Primary Objectives: 
+## Primary Objectives:  
 
 - Simulate real-world attack and defense scenarios  
 - Practice SOC analyst workflows and procedures  
@@ -18,6 +18,7 @@ and security monitoring using industry-standard tools.
 ---
 
 ## Features  
+
 - pfSense Firewall isolation to create a safe secluded environment  
 - Detections as Code Pipeline  
 - Vmware virtualization  
@@ -28,7 +29,7 @@ and security monitoring using industry-standard tools.
 ## Architecture  
 
 <div align="center">
-  <img src="/pfsense-firewall-lab/docs/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 100%;">
+  <img src="/pfsense-firewall-lab/arch/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 50%;">
 </div>
 
 ### Infrastructure Overview
@@ -76,7 +77,8 @@ and security monitoring using industry-standard tools.
 - [pfSense Firewall Lab](./pfsense-firewall-lab/)  
 - [Splunk Detection Engineering Lab](./splunk-detection-engineering-lab/)  
 - [Detections as Code Lab](https://github.com/Coded-Alchemy/Detections_as_Code)
-- [Active Directory Lab](./active-directory-lab/)  
+- [Adversary Emulation Lab](./adversary-emulation-lab/)
+- [Troubleshooting](./docs/Troubleshooting.md)
 
 ---
 
@@ -142,3 +144,5 @@ and security monitoring using industry-standard tools.
 
 - Active Directory Lab
 - SOAR Lab
+- Malware Analysis Lab
+- ICS Lab
