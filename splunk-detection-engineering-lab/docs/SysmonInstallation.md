@@ -1,6 +1,7 @@
 # Sysmon Deployment & Telemetry Engineering  
   
 ### Overview  
+
 This project documents the deployment and configuration of Sysmon (System Monitor) to enhance endpoint visibility   
 within a SOC lab environment.  
   
@@ -43,8 +44,9 @@ unzip Sysmon.zip
 cd Sysmon  
 ```  
 Or download manually from Microsoft Sysinternals.  
+[Sysmon Documentation](https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon)
   
-### 2. Create Configuration File  
+### 2. Obtain Configuration File  
 Use a production-grade config:  
 - SwiftOnSecurity Sysmon config  
 - Olaf Hartong modular config  
@@ -55,11 +57,19 @@ Example: ```sysmon-config.xml```
 ```commandline  
 Sysmon64.exe -accepteula -i sysmon-config.xml  
 ```  
+
+<div align="center">
+  <img src="../screenshots/sysmon_install.png" alt="Sysmon Installation" style="width: 50%;">
+</div>
   
 Verify installation:  
 ```commandline  
 Get-Service Sysmon64  
 ```  
+
+<div align="center">
+  <img src="../screenshots/sysmon_get_service.png" alt="Sysmon GetService" style="width: 50%;">
+</div>
   
 ### 4. Confirm Logging  
 Navigate in Event Viewer:  
@@ -70,7 +80,10 @@ Applications and Services Logs
 → Sysmon  
 → Operational  
 ```  
-  
+<div align="center">
+  <img src="../screenshots/sysmon_event_viewer.png" alt="Sysmon Event Viewer" style="width: 50%;">
+</div>
+
 ---    
 ## Key Event IDs for Detection Engineering
 
