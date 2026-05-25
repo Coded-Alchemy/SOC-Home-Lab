@@ -5,7 +5,7 @@
 
 ---
 
-## ⚠️ Authorisation Warning
+## Authorisation Warning
 
 This tooling is intended **exclusively** for use against systems you own or have explicit written authorisation to test. 
 Deploying agent software on systems without authorisation violates computer fraud laws in most jurisdictions (e.g., 
