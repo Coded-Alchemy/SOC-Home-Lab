@@ -59,6 +59,7 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 - [Deployment Commands](docs/DeploymentCommands.md)
 - [Sysmon Documentation](docs/SysmonInstallation.md)
 - [Ingesting pfSense Logs](docs/pfsense_to_splunk.md)
+- [Gmail Setup](docs/splunk_gmail_setup.md)
 - [Troubleshooting](docs/Troubleshooting.md)
 
 ---
