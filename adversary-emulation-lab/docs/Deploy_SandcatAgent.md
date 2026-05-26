@@ -7,7 +7,9 @@
 
 ## Authorisation Warning
 
-This tooling is intended **exclusively** for use against systems you own or have explicit written authorisation to test. Deploying agent software on systems without authorisation violates computer fraud laws in most jurisdictions (e.g., CFAA, Computer Misuse Act, GDPR Article 32). The authors accept no liability for misuse.
+This tooling is intended **exclusively** for use against systems you own or have explicit written authorization to test. 
+Deploying agent software on systems without authorization violates computer fraud laws in most jurisdictions (e.g., 
+CFAA, Computer Misuse Act, GDPR Article 32). The authors accept no liability for misuse.
 
 ---
 
@@ -36,7 +38,9 @@ This tooling is intended **exclusively** for use against systems you own or have
 3. Strips the Mark-of-the-Web (MotW) ADS via `Unblock-File`.
 4. Either spawns the agent as a hidden background process **or** installs it as a persistent Windows service (NSSM preferred, `sc.exe` fallback).
 
-The script is parameterised for lab, staging, and simulated production environments. It does **not** handle lateral movement or credential material — deployment is expected to be driven by an orchestration layer (Ansible, GPO, SCCM, manual execution).
+The script is parameterized for lab, staging, and simulated production environments. It does **not** handle lateral 
+movement or credential material — deployment is expected to be driven by an orchestration layer (Ansible, GPO, SCCM, 
+manual execution).
 
 ---
 
@@ -59,7 +63,8 @@ The script is parameterised for lab, staging, and simulated production environme
 └─────────────────────────────────┘
 ```
 
-The agent checks in on its configured beacon interval (default: 60 s jitter), receives tasks from the planner, executes abilities, and exfiltrates results back to the server. All comms are over the selected C2 channel.
+The agent checks in on its configured beacon interval (default: 60 s jitter), receives tasks from the planner, executes 
+abilities, and exfiltrates results back to the server. All comms are over the selected C2 channel.
 
 ---
 
@@ -88,14 +93,14 @@ The agent checks in on its configured beacon interval (default: 60 s jitter), re
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
-|---|---|---|---|---|
-| `-CalderaServer` | `string` | ✅ | — | Base URL of the Caldera server including scheme and port. Must match `^https?://`. |
-| `-Group` | `string` | ❌ | `red` | Agent group to enrol into. Corresponds to Caldera's group concept used by adversary profiles. |
-| `-C2Channel` | `string` | ❌ | `http` | Contact channel for C2 comms. One of: `http`, `udp`, `tcp`, `websocket`. |
-| `-InstallAsService` | `switch` | ❌ | `$false` | Installs the agent as a persistent Windows service with auto-start. |
-| `-ServiceName` | `string` | ❌ | `CalderaSandcat` | Display and registry name for the Windows service. Rename for operational blending. |
-| `-AgentPath` | `string` | ❌ | `C:\Windows\Temp\sandcat.exe` | Filesystem path where the agent binary is written. |
-| `-Proxy` | `string` | ❌ | `""` | HTTP proxy URL for download and beacon traffic (e.g., `http://proxy.corp.local:8080`). |
+|---|---|----------|---|---|
+| `-CalderaServer` | `string` | yes      | — | Base URL of the Caldera server including scheme and port. Must match `^https?://`. |
+| `-Group` | `string` | no       | `red` | Agent group to enrol into. Corresponds to Caldera's group concept used by adversary profiles. |
+| `-C2Channel` | `string` | no       | `http` | Contact channel for C2 comms. One of: `http`, `udp`, `tcp`, `websocket`. |
+| `-InstallAsService` | `switch` | no       | `$false` | Installs the agent as a persistent Windows service with auto-start. |
+| `-ServiceName` | `string` | no       | `CalderaSandcat` | Display and registry name for the Windows service. Rename for operational blending. |
+| `-AgentPath` | `string` | no       | `C:\Windows\Temp\sandcat.exe` | Filesystem path where the agent binary is written. |
+| `-Proxy` | `string` | no       | `""` | HTTP proxy URL for download and beacon traffic (e.g., `http://proxy.corp.local:8080`). |
 
 ---
 
@@ -191,7 +196,8 @@ contacts:
 
 ## Persistence via Windows Service
 
-When `-InstallAsService` is passed, the script automatically downloads and installs NSSM if not already present, then uses it to wrap the agent as a proper Windows service.
+When `-InstallAsService` is passed, the script automatically downloads and installs NSSM if not already present, then 
+uses it to wrap the agent as a proper Windows service.
 
 ### Automatic NSSM Installation
 
@@ -215,7 +221,8 @@ nssm set     <ServiceName> AppRestartDelay 5000
 nssm start   <ServiceName>
 ```
 
-The script auto-downloads NSSM when needed. If you prefer manual installation, download it and place `nssm.exe` anywhere on `$PATH` before running the script.
+The script auto-downloads NSSM when needed. If you prefer manual installation, download it and place `nssm.exe` anywhere 
+on `$PATH` before running the script.
 
 ### Option B — `sc.exe` with batch wrapper (fallback)
 
@@ -305,17 +312,6 @@ Check that the `-Group` value exists in Caldera (or create it). Review `sandcat`
 
 **Service installs but immediately stops**  
 If using the `sc.exe` fallback, verify that `cmd.exe` can resolve the wrapper batch path. Run the batch file manually in a shell to observe the error. Consider installing NSSM instead.
-
----
-
-## Contributing
-
-Pull requests are welcome. Please:
-
-- Test changes against Caldera ≥ 4.1 on Windows 10/11 and Windows Server 2019/2022.
-- Keep the script self-contained (no external module dependencies).
-- Follow [PowerShell best practices](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines) — approved verbs, `[CmdletBinding()]`, proper error handling.
-- Update this README if parameters or behaviour change.
 
 ---
 
