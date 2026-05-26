@@ -10,9 +10,7 @@ The goal is to mirror real-world enterprise architecture and workflows used by s
 
 ## Architecture Summary
 
-<div align="center">
-  <img src="architecture/SplunkDataFlow.png" alt="Splunk Data Flow" style="width: 10%;">
-</div>
+> ![Architecture Summary](architecture/SplunkDataFlow.png)
 
 ### Core Components
 * Splunk Enterprise (Indexer + Deployment Server + Search Head + License Manager)
