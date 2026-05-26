@@ -8,6 +8,8 @@
 - App missing configuration files (empty apps will not deploy).
 - Incorrect permissions on deployment-apps directory.
 
+---
+
 ## Verification
 
 On Linux forwarders:
@@ -24,3 +26,16 @@ TA_base_forwarder
 TA_linux_logs
 TA_windows_logs
 TA_sysmon_logs
+
+---
+
+## Required Ports
+
+These ports should be open on the machine hosting Splunk ES / Caldera
+
+| Port | Usage                    |
+| ---- | ------------------------ |
+| 9997 | Splunk Forwarding        |
+| 8089 | Splunk Deployment Server |
+| 5514 |                          |
+| 8888 | Caldera Sandcat Agent    |
