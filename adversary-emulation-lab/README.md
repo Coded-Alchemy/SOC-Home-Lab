@@ -28,11 +28,15 @@ This lab simulates a small-to-medium enterprise environment:
 ---
 ## Technologies Used
 
-- MITRE Caldera (Adversary Emulation)
-- Splunk (SIEM & Detection Engineering)
-- Sysmon (Endpoint Telemetry)
-- pfSense (Network Security)
-- VMware (Infrastructure)
+
+| Technology    | Usage                        |
+| ------------- | ---------------------------- |
+| MITRE Caldera | Adversary Emulation          |
+| Splunk        | SIEM & Detection Engineering |
+| Sysmon        | Endpoint Telemetry           |
+| pfSense       | Network Security             |
+| VMware        | Infrastructure               |
+
 
 ---
 ## Key Takeaways

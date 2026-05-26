@@ -46,22 +46,7 @@ manual execution).
 
 ## Architecture
 
-```
-┌─────────────────────────────────┐        ┌──────────────────────────────┐
-│         Caldera Server          │        │        Windows Target         │
-│  (Linux / Docker / WSL2)        │        │                              │
-│                                 │        │  Deploy-SandcatAgent.ps1     │
-│  ┌───────────┐  ┌────────────┐  │◄──────►│    │                         │
-│  │  REST API │  │ /file/     │  │  HTTP  │    ├─ GET /ping              │
-│  │  :8888    │  │ download   │  │        │    ├─ GET /file/download     │
-│  └───────────┘  └────────────┘  │        │    └─ Launch sandcat.exe     │
-│                                 │        │           │                  │
-│  ┌────────────────────────────┐ │        │           │ beacon           │
-│  │       Agent Manager        │ │◄───────┤───────────┘                  │
-│  │  (beacon / tasking / C2)   │ │        │                              │
-│  └────────────────────────────┘ │        └──────────────────────────────┘
-└─────────────────────────────────┘
-```
+> ![Sandcat Agent Architecture](../architecture/sandcat_agent.png)
 
 The agent checks in on its configured beacon interval (default: 60 s jitter), receives tasks from the planner, executes 
 abilities, and exfiltrates results back to the server. All comms are over the selected C2 channel.
