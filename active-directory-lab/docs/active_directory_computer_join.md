@@ -36,37 +36,8 @@ Joining systems to Active Directory enables:
 
 # Architecture Overview
 
-```text
-+------------------------------------------------+
-|                Domain Controller               |
-|------------------------------------------------|
-| Active Directory                               |
-| DNS                                            |
-| Kerberos Authentication                        |
-+------------------------+-----------------------+
-                         |
-                         |
-                         v
-+------------------------------------------------+
-|                Windows Endpoint                |
-|------------------------------------------------|
-| Joined to lab.local                            |
-| Sysmon Installed                               |
-| Splunk Universal Forwarder Installed           |
-| Sends Security Logs to Splunk                  |
-+------------------------------------------------+
-                         |
-                         |
-                         v
-+------------------------------------------------+
-|                    Splunk SIEM                 |
-|------------------------------------------------|
-| Centralized Log Collection                     |
-| Endpoint Monitoring                            |
-| Detection Engineering                          |
-| Threat Hunting                                 |
-+------------------------------------------------+
-```
+> ![Lab Architecture](../architecture/ad_arch.png)
+
 
 ---
 
