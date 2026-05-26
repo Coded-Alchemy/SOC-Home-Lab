@@ -28,9 +28,7 @@ and security monitoring using industry-standard tools.
 
 ## Architecture  
 
-<div align="center">
-  <img src="/pfsense-firewall-lab/arch/Home_Lab_Network.drawio.png" alt="Network Architecture" style="width: 50%;">
-</div>
+> ![Lab Architecture](/pfsense-firewall-lab/arch/Home_Lab_Network.drawio.png)
 
 ### Infrastructure Overview
 
@@ -117,7 +115,6 @@ and security monitoring using industry-standard tools.
 	- Web application testing
 	- Password cracking and credential attacks
 	- Post-exploitation and privilege escalation
-
 ---
 
 ## Skills Demonstrated  
@@ -141,7 +138,6 @@ and security monitoring using industry-standard tools.
 ---
 
 ## Future Enhancements  
-
 - Active Directory Lab
 - SOAR Lab
 - Malware Analysis Lab

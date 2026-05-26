@@ -58,18 +58,15 @@ Example: ```sysmon-config.xml```
 Sysmon64.exe -accepteula -i sysmon-config.xml  
 ```  
 
-<div align="center">
-  <img src="../screenshots/sysmon_install.png" alt="Sysmon Installation" style="width: 50%;">
-</div>
+> ![Sysymon Install](../screenshots/sysmon_install.png)
+
   
 Verify installation:  
 ```commandline  
 Get-Service Sysmon64  
 ```  
 
-<div align="center">
-  <img src="../screenshots/sysmon_get_service.png" alt="Sysmon GetService" style="width: 50%;">
-</div>
+> ![Verify Installation](../screenshots/sysmon_get_service.png)
   
 ### 4. Confirm Logging  
 Navigate in Event Viewer:  
@@ -80,9 +77,8 @@ Applications and Services Logs
 → Sysmon  
 → Operational  
 ```  
-<div align="center">
-  <img src="../screenshots/sysmon_event_viewer.png" alt="Sysmon Event Viewer" style="width: 50%;">
-</div>
+
+> ![Event Viewer](../screenshots/sysmon_event_viewer.png)
 
 ---    
 ## Key Event IDs for Detection Engineering
