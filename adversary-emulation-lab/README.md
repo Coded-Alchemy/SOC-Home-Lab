@@ -23,7 +23,7 @@ This lab simulates a small-to-medium enterprise environment:
 - Network Control: pfSense Firewall
 - Virtualization: VMware
 
-> ![Lab Architecture](./arch/adversary_emulation.png)
+> ![Lab Architecture](./architecture/adversary_emulation.png)
 
 ---
 ## Technologies Used
