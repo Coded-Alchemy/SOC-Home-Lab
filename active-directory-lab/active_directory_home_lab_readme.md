@@ -1,39 +1,48 @@
-# Active Directory Lab
+# 🔐 Active Directory Home Lab
 
-## Overview
+## 📌 Overview
 
-This project simulates a real-world enterprise Active Directory (AD) environment with centralized identity management, 
-endpoint monitoring, and security detection capabilities. The lab is designed to demonstrate practical skills in:
+This project simulates a real-world enterprise Active Directory (AD) environment with centralized identity management, endpoint monitoring, and security detection capabilities. The lab is designed to demonstrate practical skills in:
 
 - Active Directory administration
 - Security monitoring and logging
 - Detection engineering
 - Adversary emulation
 
-The environment mirrors a small enterprise network where identity infrastructure, endpoints, and security tooling are 
-integrated to detect and respond to threats.
+The environment mirrors a small enterprise network where identity infrastructure, endpoints, and security tooling are integrated to detect and respond to threats.
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
 ### High-Level Design
 
-> ![Lab Architecture](architecture/active_directory_arch.png)
+```
+                         [ Kali Linux Attacker ]
+                                   |
+                             ( WAN / NAT )
+                                   |
+                            [ pfSense Firewall ]
+                                   |
+        -----------------------------------------------------
+        |                        |                          |
+ [ Domain Controller ]     [ Windows 10 Client ]     [ Splunk Server ]
+     (AD DS / DNS)            (Endpoint)               (SIEM)
+```
 
 ---
 
-### Architecture Description
+### 🧠 Architecture Description
 
 - **pfSense Firewall**: Controls traffic between WAN and internal lab network
 - **Domain Controller**: Hosts Active Directory Domain Services (AD DS), DNS, and authentication services
 - **Windows Endpoint**: Domain-joined workstation used to simulate user activity
 - **Splunk Server**: Centralized log aggregation and detection platform
-- **MITRE Caldera**: Used for adversary emulation and attack simulation
+- **Kali Linux**: Used for adversary emulation and attack simulation
 
 ---
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 - Active Directory Domain Services (AD DS)
 - Windows Server 2019/2022
@@ -41,15 +50,15 @@ integrated to detect and respond to threats.
 - Splunk (SIEM)
 - Sysmon (endpoint telemetry)
 - pfSense (firewall)
-- MITRE Caldera (adversary emulation)
+- Kali Linux (attacker machine)
 
 ---
 
-## Active Directory Configuration
+## 🏢 Active Directory Configuration
 
 ### Domain Setup
 
-- Domain Name: `lab.local`
+- Domain Name: `corp.local`
 - Single forest, single domain architecture
 - Domain Controller configured with DNS
 
@@ -58,7 +67,7 @@ integrated to detect and respond to threats.
 ### Organizational Unit (OU) Structure
 
 ```
-lab.local
+corp.local
 │
 ├── Users
 ├── Computers
@@ -76,7 +85,7 @@ lab.local
 
 ---
 
-## Group Policy Configuration
+## 🔐 Group Policy Configuration
 
 Group Policy Objects (GPOs) were implemented to enforce security controls and enable logging.
 
@@ -93,7 +102,7 @@ Group Policy Objects (GPOs) were implemented to enforce security controls and en
 
 ---
 
-## Logging & Monitoring Pipeline
+## 📡 Logging & Monitoring Pipeline
 
 ### Log Flow
 
@@ -110,9 +119,9 @@ Windows Endpoint → Sysmon → Splunk Forwarder → Splunk Indexer
 
 ---
 
-## Adversary Emulation
+## ⚔️ Adversary Simulation
 
-Attack scenarios were executed from the MITRE Caldera C2 server to simulate real-world threats.
+Attack scenarios were executed from the Kali Linux machine to simulate real-world threats.
 
 ### Techniques Simulated
 
@@ -130,7 +139,7 @@ Mapped to MITRE ATT&CK techniques:
 
 ---
 
-## Detection Engineering
+## 🧠 Detection Engineering
 
 Detection logic was developed based on observed attacker behavior.
 
@@ -143,7 +152,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Screenshots
+## 📊 Screenshots
 
 > Add screenshots here to demonstrate:
 
@@ -154,7 +163,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Key Takeaways
+## ✅ Key Takeaways
 
 - Built a functional enterprise-style identity infrastructure
 - Implemented centralized logging and monitoring
@@ -163,7 +172,7 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Future Improvements
+## 🚀 Future Improvements
 
 - Integrate automated detection deployment (Detection-as-Code)
 - Expand environment with additional endpoints
@@ -172,7 +181,6 @@ Detection logic was developed based on observed attacker behavior.
 
 ---
 
-## Notes
+## 📎 Notes
 
-This lab is part of a broader security engineering portfolio focused on detection pipelines, 
-SIEM engineering, and adversary emulation.
+This lab is part of a broader security engineering portfolio focused on detection pipelines, SIEM engineering, and adversary emulation.
