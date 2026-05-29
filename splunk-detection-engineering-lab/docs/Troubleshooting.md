@@ -34,8 +34,8 @@ TA_sysmon_logs
 These ports should be open on the machine hosting Splunk ES / Caldera
 
 | Port | Usage                    |
-| ---- |--------------------------|
+| ---- | ------------------------ |
 | 9997 | Splunk Forwarding        |
 | 8089 | Splunk Deployment Server |
-| 5514 | pfSense Logs             |
+| 5514 |                          |
 | 8888 | Caldera Sandcat Agent    |

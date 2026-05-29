@@ -19,9 +19,7 @@ integrated to detect and respond to threats.
 
 ### High-Level Design
 
-<div align="center">
-  <img src="arch/active_directory_arch.png" alt="Active Directory Architecture" style="width: 50%;">
-</div>
+> ![Lab Architecture](architecture/active_directory_arch.png)
 
 ---
 
