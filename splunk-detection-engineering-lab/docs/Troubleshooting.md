@@ -34,8 +34,18 @@ TA_sysmon_logs
 These ports should be open on the machine hosting Splunk ES / Caldera
 
 | Port | Usage                    |
-| ---- | ------------------------ |
+| ---- |--------------------------|
 | 9997 | Splunk Forwarding        |
 | 8089 | Splunk Deployment Server |
-| 5514 |                          |
+| 5514 | pfSense Logs             |
 | 8888 | Caldera Sandcat Agent    |
+
+---
+
+## TA-pfSense
+
+When installing this addon, it wont seem to parse correctly. There is a double timestamp.
+
+> ![Splunk Log Unparsed](../screenshots/unparsed_pfsense_log.png)
+
+The fis is to set ```no_appending_timestamp = true```
