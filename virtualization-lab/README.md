@@ -1,13 +1,14 @@
-# VMware Virtualization Infrastructure 
-
 
 <div align="center">
+
+# VMware Virtualization Infrastructure 
 
 **Virtualization Architecture for a Security Engineering Home Lab**
 
 Compute • Networking • VM Design • Infrastructure Segmentation
 
 </div>
+
 ---
 ## Overview
 
@@ -34,9 +35,8 @@ Storage: 1.5TB SSD
 
 ---
 ## Virtualization Architecture
-<div align="center">
-  <img src="docs/virtualization_arch.svg" alt="Virtualization Architecture Diagram" style="width: 100%;">
-</div>
+
+> ![Virtualization Architecture](architecture/virtualization_arch.svg)
 
 ---
 ## Virtual Machine Inventory 
