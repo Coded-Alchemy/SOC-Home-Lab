@@ -1,0 +1,26 @@
+rule_id,detection_name,mitre_technique,severity,status,author,created_at,data_source,log_source,false_positive
+det_0001,Data Archiving Activity,T1560,medium,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0002,Data Exfiltration via DNS,T1048.003,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0003,Encoded/Obfuscated Command Execution,T1027,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0004,Excessive Failed Login Attempts,T1110,medium,active,Taji Abdullah,2026-06-08,Windows Security,Windows,medium
+det_0005,Kerberoasting Activity,T1558.003,high,active,Taji Abdullah,2026-06-08,Windows Security,Windows,low
+det_0006,Lateral Movement via Admin Shares,T1021.002,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0007,Local Account Creation,T1136.001,medium,active,Taji Abdullah,2026-06-08,Windows Security,Windows,low
+det_0008,Local Account Enumeration,T1087.001,medium,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0009,Network Reconnaissance,T1016,medium,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0010,Office Application Spawning Suspicious Processes,T1204.002,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0011,Potential Multi-Stage Attack Chain,Tactic Correlation,critical,active,Taji Abdullah,2026-06-08,Multiple,Windows,low
+det_0012,Privilege Escalation via Token Manipulation,T1134,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0013,Process Enumeration,T1057,medium,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0014,Registry Run Key Modification,T1547.001,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0015,Remote WMI Execution,T1047,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0016,Screen Capture Tools Execution,T1113,medium,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0017,Security Tool Tampering,T1562.001,critical,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0018,Suspicious Command Shell Activity,T1059.003,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0019,Suspicious Email Attachment Execution,T1204.002,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,medium
+det_0020,Suspicious Local Admin Activity,T1078,high,active,Taji Abdullah,2026-06-08,Windows Security,Windows,medium
+det_0021,Suspicious PowerShell Execution,T1059.001,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0022,Suspicious Scheduled Task Creation,T1053.005,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0023,UAC Bypass Attempt,T1548.002,high,active,Taji Abdullah,2026-06-08,Sysmon,Windows,low
+det_0024,Windows Defender Threat Detection Disabled,T1562.001,critical,active,Taji Abdullah,2026-06-08,Windows Defender,Windows,low
+det_0025,Windows Event Log Cleared,T1070.001,critical,active,Taji Abdullah,2026-06-08,Windows Security,Windows,low
