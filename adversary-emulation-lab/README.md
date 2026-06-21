@@ -23,14 +23,20 @@ This lab simulates a small-to-medium enterprise environment:
 - Network Control: pfSense Firewall
 - Virtualization: VMware
 
+> ![Lab Architecture](./architecture/adversary_emulation.png)
+
 ---
 ## Technologies Used
 
-- MITRE Caldera (Adversary Emulation)
-- Splunk (SIEM & Detection Engineering)
-- Sysmon (Endpoint Telemetry)
-- pfSense (Network Security)
-- VMware (Infrastructure)
+
+| Technology    | Usage                        |
+| ------------- | ---------------------------- |
+| MITRE Caldera | Adversary Emulation          |
+| Splunk        | SIEM & Detection Engineering |
+| Sysmon        | Endpoint Telemetry           |
+| pfSense       | Network Security             |
+| VMware        | Infrastructure               |
+
 
 ---
 ## Key Takeaways
