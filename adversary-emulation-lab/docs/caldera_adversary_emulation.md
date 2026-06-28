@@ -1,6 +1,6 @@
 # Caldera Adversary Emulation — Home Lab Documentation
 
-> **Author:** [Your Name]
+> **Author:** Taji Abdullah
 > **Lab Environment:** Home Lab
 > **Caldera Version:** [e.g., 5.x]
 > **Last Updated:** [Date]

@@ -36,7 +36,7 @@ integrated to detect and respond to threats.
 ## Technologies Used
 
 - Active Directory Domain Services (AD DS)
-- Windows Server 2019/2022
+- Windows Server 2025
 - Windows 10/11
 - Splunk (SIEM)
 - Sysmon (endpoint telemetry)
