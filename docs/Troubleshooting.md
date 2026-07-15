@@ -26,3 +26,11 @@ In Linux with kernel 4.0 or newer:
 /usr/bin/vmhgfs-fuse .host:/ /home/user1/shares -o subtype=vmhgfs-fuse,allow_other
 ```
 A file may need a line uncommented, the output will indicate this when this snippet is ran.
+
+---
+
+## Windows 11 VM Random Shutdowns
+
+https://www.thewindowsclub.com/vmware-vm-suspend-automatically
+
+---
